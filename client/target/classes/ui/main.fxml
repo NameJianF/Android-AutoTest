@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
+            prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="live.itrip.client.controller.MainController">
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
+            <children>
+                <Button fx:id="btnSocket" mnemonicParsing="false" text="Socket" onMouseClicked="#buttonSocketClick"/>
+            </children>
+            <BorderPane.margin>
+                <Insets left="10.0"/>
+            </BorderPane.margin>
+        </HBox>
+    </top>
+
+    <left>
+        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView fx:id="imageVewScreenshot" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"
+                           preserveRatio="true">
+                    <VBox.margin>
+                        <Insets bottom="2.0" left="5.0" right="5.0" top="2.0"/>
+                    </VBox.margin>
+                    <image>
+                        <Image url="@../img/screenshot.jpg"/>
+                    </image>
+                </ImageView>
+                <HBox prefHeight="40.0" prefWidth="200.0"/>
+            </children>
+        </VBox>
+    </left>
+
+    <center>
+        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0"
+                   BorderPane.alignment="CENTER">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <TabPane layoutX="109.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0"
+                                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="2.0"
+                                 AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                            <tabs>
+                                <Tab text="Untitled Tab 1">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                                    prefWidth="200.0"/>
+                                    </content>
+                                </Tab>
+                                <Tab text="Untitled Tab 2">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                                    prefWidth="200.0"/>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                    <children>
+                        <TabPane layoutX="71.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0"
+                                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="2.0"
+                                 AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
+                            <tabs>
+                                <Tab text="Untitled Tab 1">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                                    prefWidth="200.0"/>
+                                    </content>
+                                </Tab>
+                                <Tab text="Untitled Tab 2">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+                                                    prefWidth="200.0"/>
+                                    </content>
+                                </Tab>
+                            </tabs>
+                        </TabPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </center>
+
+    <bottom>
+        <Pane prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
+    </bottom>
+</BorderPane>

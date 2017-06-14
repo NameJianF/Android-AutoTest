@@ -1,0 +1,12 @@
+app-agent/*.iml
+app-agent/.gradle
+app-agent/local.properties
+app-agent/.idea/workspace.xml
+app-agent/.idea/libraries
+app-agent/.DS_Store
+app-agent/build
+app-agent/captures
+app-agent/.externalNativeBuild
+
+
+
