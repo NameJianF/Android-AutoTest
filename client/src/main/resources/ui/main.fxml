@@ -13,13 +13,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.media.MediaView?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
             prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="live.itrip.client.controller.MainController">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <Button fx:id="btnSocket" mnemonicParsing="false" text="Socket" onMouseClicked="#buttonSocketClick"/>
+                <Button fx:id="btnScreenshot" mnemonicParsing="false" text="截图" onMouseClicked="#btnScreenshotClick"/>
+                <Button fx:id="btnLive" mnemonicParsing="false" text="实时" onMouseClicked="#btnLiveClick"/>
+                <Button fx:id="btnStop" mnemonicParsing="false" text="Stop" onMouseClicked="#btnStopClick"/>
             </children>
             <BorderPane.margin>
                 <Insets left="10.0"/>
@@ -28,17 +31,20 @@
     </top>
 
     <left>
-        <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox fx:id="vBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="imageVewScreenshot" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"
+                <ImageView fx:id="imageView" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"
                            preserveRatio="true">
                     <VBox.margin>
                         <Insets bottom="2.0" left="5.0" right="5.0" top="2.0"/>
                     </VBox.margin>
-                    <image>
-                        <Image url="@../img/screenshot.jpg"/>
-                    </image>
                 </ImageView>
+                <!--<MediaView fx:id="mediaView" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"-->
+                           <!--preserveRatio="true">-->
+                    <!--<VBox.margin>-->
+                        <!--<Insets bottom="2.0" left="5.0" right="5.0" top="2.0"/>-->
+                    <!--</VBox.margin>-->
+                <!--</MediaView>-->
                 <HBox prefHeight="40.0" prefWidth="200.0"/>
             </children>
         </VBox>

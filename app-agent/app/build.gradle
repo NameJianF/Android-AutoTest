@@ -26,7 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
-    //    compile 'com.koushikdutta.async:androidasync:2.+'
-    compile files('libs/xSocket-2.8.15.jar')
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.koushikdutta.async:androidasync:2.1.9'
 }

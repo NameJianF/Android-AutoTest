@@ -2,7 +2,6 @@ package android.view;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 
 public class DisplayInfo implements Parcelable {
     public static final Creator<DisplayInfo> CREATOR = new Creator<DisplayInfo>() {
