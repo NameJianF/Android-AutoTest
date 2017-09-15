@@ -15,35 +15,25 @@ public class AdbCmdFormat {
     /**
      * 格式化adb shell指令
      *
-     * @param req
+     * @param command
      * @return
      */
-    public static String formAdbShellRequest(String serialNumber, String req) {
+    public static String formatAdbShellCommand(String serialNumber, String command) {
         String cmd = String.format("%s %s \"%s\" shell %s",
-                App.getAdbPath(), SERIAL, serialNumber, req);
+                DirectoryService.getAdbPath(), SERIAL, serialNumber, command);
         return cmd;
     }
 
     /**
      * 格式化adb指令
      *
-     * @param req
+     * @param command
      * @return
      */
-    public static String formAdbRequest(String serialNumber, String req) {
+    public static String formatAdbCommand(String serialNumber, String command) {
         String cmd = String.format("%s %s \"%s\" %s",
-                App.getAdbPath(), SERIAL, serialNumber, req);
+                DirectoryService.getAdbPath(), SERIAL, serialNumber, command);
         return cmd;
     }
 
-    /**
-     * 发送adb 请求
-     *
-     * @param req
-     * @return
-     */
-    public static String formAdbRequest(String req) {
-        String cmd = String.format("%s %s", App.getAdbPath(), req);
-        return cmd;
-    }
 }

@@ -8,9 +8,4 @@ import javafx.stage.Stage;
 public class App {
 
     public static Stage primaryStage;
-
-
-    public static String getAdbPath() {
-        return "";
-    }
 }

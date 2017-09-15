@@ -1,0 +1,90 @@
+package live.itrip.agent;
+
+/**
+ * Created by Feng on 2017/9/11.
+ */
+
+public class Dumpsys {
+    public static final String DeviceManager3LM = "DeviceManager3LM";
+    public static final String Encryption3LMService = "Encryption3LMService";
+    public static final String HtcAppUsageStatsService = "HtcAppUsageStatsService";
+    public static final String SurfaceFlinger = "SurfaceFlinger";
+    public static final String accessibility = "accessibility";
+    public static final String account = "account";
+    public static final String activity = "activity";
+    public static final String alarm = "alarm";
+    public static final String appwidget = "appwidget";
+    public static final String audio = "audio";
+    public static final String backup = "backup";
+    public static final String battery = "battery";
+    public static final String batteryinfo = "batteryinfo";
+    public static final String bluetooth = "bluetooth";
+    public static final String bluetooth_a2dp = "bluetooth_a2dp";
+    public static final String bluetooth_hid = "bluetooth_hid";
+    public static final String bt_fm_management = "bt_fm_management";
+    public static final String clipboard = "clipboard";
+    public static final String connectivity = "connectivity";
+    public static final String content = "content";
+    public static final String country_detector = "country_detector";
+    public static final String cpuinfo = "cpuinfo";
+    public static final String device_policy = "device_policy";
+    public static final String devicestoragemonitor = "devicestoragemonitor";
+    public static final String diskstats = "diskstats";
+    public static final String display = "display";
+    public static final String drm_drmManager = "drm.drmManager";
+    public static final String dropbox = "dropbox";
+    public static final String entropy = "entropy";
+    public static final String gfxinfo = "gfxinfo";
+    public static final String hardware = "hardware";
+    public static final String htc_checkin = "htc_checkin";
+    public static final String htchardware = "htchardware";
+    public static final String htctelephony = "htctelephony";
+    public static final String htctelephonyinternal = "htctelephonyinternal";
+    public static final String input_method = "input_method";
+    public static final String iphonesubinfo = "iphonesubinfo";
+    public static final String isms = "isms";
+    public static final String location = "location";
+    public static final String media_audio_flinger = "media.audio_flinger";
+    public static final String media_audio_policy = "media.audio_policy";
+    public static final String media_camera = "media.camera";
+    public static final String media_player = "media.player";
+    public static final String meminfo = "meminfo";
+    public static final String mount = "mount";
+    public static final String netpolicy = "netpolicy";
+    public static final String netstats = "netstats";
+    public static final String network_management = "network_management";
+    public static final String notification = "notification";
+    public static final String str_package = "package";
+    public static final String permission = "permission";
+    public static final String phone = "phone";
+    public static final String power = "power";
+    public static final String samplingprofiler = "samplingprofiler";
+    public static final String search = "search";
+    public static final String secfirewall = "secfirewall";
+    public static final String secloader = "secloader";
+    public static final String sensorservice = "sensorservice";
+    public static final String simphonebook = "simphonebook";
+    public static final String sip = "sip";
+    public static final String statusbar = "statusbar";
+    public static final String stub_activity = "stub_activity";
+    public static final String stub_audio = "stub_audio";
+    public static final String stub_iphonesubinfo = "stub_iphonesubinfo";
+    public static final String stub_isms = "stub_isms";
+    public static final String stub_location = "stub_location";
+    public static final String stub_phone = "stub_phone";
+    public static final String stub_telephony_registry = "stub_telephony.registry";
+    public static final String telephony_registry = "telephony.registry";
+    public static final String textservices = "textservices";
+    public static final String throttle = "throttle";
+    public static final String uimode = "uimode";
+    public static final String usagestats = "usagestats";
+    public static final String usb = "usb";
+    public static final String usbnet = "usbnet";
+    public static final String userbehavior = "userbehavior";
+    public static final String vibrator = "vibrator";
+    public static final String wallpaper = "wallpaper";
+    public static final String wifi = "wifi";
+    public static final String wifip2p = "wifip2p";
+    public static final String window = "window	";
+
+}

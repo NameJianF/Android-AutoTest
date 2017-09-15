@@ -7,6 +7,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import live.itrip.client.common.App;
 import live.itrip.client.common.Config;
+import live.itrip.client.device.DeviceManager;
 import live.itrip.client.util.Logger;
 import live.itrip.client.util.PageUtil;
 
@@ -39,6 +40,8 @@ public class AppMain extends Application {
 //        primaryStage.setFullScreen(true);
         primaryStage.getIcons().add(PageUtil.getLogo());
         primaryStage.show();
+
+        DeviceManager.getInstance().start();
     }
 
 

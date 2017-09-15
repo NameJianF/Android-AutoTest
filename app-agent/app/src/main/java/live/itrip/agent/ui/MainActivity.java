@@ -2,6 +2,7 @@ package live.itrip.agent.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.WindowManager;
 
 import live.itrip.agent.R;
 

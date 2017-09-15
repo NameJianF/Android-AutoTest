@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
-<?import javafx.scene.image.Image?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -13,16 +18,38 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<?import javafx.scene.media.MediaView?>
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
-            prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+            prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="live.itrip.client.controller.MainController">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
             <children>
-                <Button fx:id="btnScreenshot" mnemonicParsing="false" text="截图" onMouseClicked="#btnScreenshotClick"/>
-                <Button fx:id="btnLive" mnemonicParsing="false" text="实时" onMouseClicked="#btnLiveClick"/>
-                <Button fx:id="btnStop" mnemonicParsing="false" text="Stop" onMouseClicked="#btnStopClick"/>
+                <Button fx:id="btnConnect" mnemonicParsing="false" onMouseClicked="#btnConnectClick" text="连接设备">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnStop" mnemonicParsing="false" onMouseClicked="#btnStopClick" text="停止">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <!--<Button fx:id="btnStop" mnemonicParsing="false" onMouseClicked="#btnStopClick" text="停止">-->
+                <!--<HBox.margin>-->
+                <!--<Insets right="10.0"/>-->
+                <!--</HBox.margin>-->
+                <!--</Button>-->
+                <Button fx:id="btnScreenshot" mnemonicParsing="false" onMouseClicked="#btnScreenshotClick" text="截图">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnLive" mnemonicParsing="false" onMouseClicked="#btnLiveClick" text="实时">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+
             </children>
             <BorderPane.margin>
                 <Insets left="10.0"/>
@@ -31,7 +58,7 @@
     </top>
 
     <left>
-        <VBox fx:id="vBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+        <VBox fx:id="vBox" prefHeight="504.0" prefWidth="310.0" BorderPane.alignment="CENTER">
             <children>
                 <ImageView fx:id="imageView" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"
                            preserveRatio="true">
@@ -39,11 +66,7 @@
                         <Insets bottom="2.0" left="5.0" right="5.0" top="2.0"/>
                     </VBox.margin>
                 </ImageView>
-                <!--<MediaView fx:id="mediaView" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"-->
-                           <!--preserveRatio="true">-->
-                    <!--<VBox.margin>-->
-                        <!--<Insets bottom="2.0" left="5.0" right="5.0" top="2.0"/>-->
-                    <!--</VBox.margin>-->
+                <!--<MediaView fx:id="mediaView" fitHeight="533.0" fitWidth="300.0" >-->
                 <!--</MediaView>-->
                 <HBox prefHeight="40.0" prefWidth="200.0"/>
             </children>
@@ -60,16 +83,86 @@
                                  tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="2.0"
                                  AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                             <tabs>
-                                <Tab text="Untitled Tab 1">
+                                <Tab text="Device Information">
                                     <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                                    prefWidth="200.0"/>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <ListView fx:id="listViewDeviceInfo"/>
+                                            </content>
+                                        </ScrollPane>
                                     </content>
                                 </Tab>
-                                <Tab text="Untitled Tab 2">
+                                <Tab text="App Information">
                                     <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                                    prefWidth="200.0"/>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <ListView fx:id="listViewAppInfo"/>
+                                            </content>
+                                        </ScrollPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="Memory">
+                                    <content>
+                                        <ScrollPane fx:id="scrollPaneMemory" fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <LineChart fx:id="lineChartMemory" >
+                                                    <xAxis>
+                                                        <NumberAxis side="BOTTOM"/>
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis side="LEFT" label="Memory(KB)"/>
+                                                    </yAxis>
+                                                </LineChart>
+                                            </content>
+                                        </ScrollPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="CPU">
+                                    <content>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <LineChart>
+                                                    <xAxis>
+                                                        <CategoryAxis side="BOTTOM"/>
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis side="LEFT"/>
+                                                    </yAxis>
+                                                </LineChart>
+                                            </content>
+                                        </ScrollPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="NetWork">
+                                    <content>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <LineChart>
+                                                    <xAxis>
+                                                        <CategoryAxis side="BOTTOM"/>
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis side="LEFT"/>
+                                                    </yAxis>
+                                                </LineChart>
+                                            </content>
+                                        </ScrollPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="GPU">
+                                    <content>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <LineChart>
+                                                    <xAxis>
+                                                        <CategoryAxis side="BOTTOM"/>
+                                                    </xAxis>
+                                                    <yAxis>
+                                                        <NumberAxis side="LEFT"/>
+                                                    </yAxis>
+                                                </LineChart>
+                                            </content>
+                                        </ScrollPane>
                                     </content>
                                 </Tab>
                             </tabs>
@@ -82,16 +175,28 @@
                                  tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="2.0"
                                  AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
                             <tabs>
-                                <Tab text="Untitled Tab 1">
+                                <Tab text="Logcat">
                                     <content>
                                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
                                                     prefWidth="200.0"/>
                                     </content>
                                 </Tab>
-                                <Tab text="Untitled Tab 2">
+                                <Tab text="Tombstones">
                                     <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                                    prefWidth="200.0"/>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <TextArea editable="false"/>
+                                            </content>
+                                        </ScrollPane>
+                                    </content>
+                                </Tab>
+                                <Tab text="ANR Traces">
+                                    <content>
+                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                                            <content>
+                                                <TextArea editable="false"/>
+                                            </content>
+                                        </ScrollPane>
                                     </content>
                                 </Tab>
                             </tabs>

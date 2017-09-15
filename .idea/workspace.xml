@@ -2,49 +2,42 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="89cd75f3-909a-4e2a-a929-671d8456cb2b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController$1$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController$2.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/SocketClient.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ClientHandler$ContentHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ClientHandler.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandExecResult$ErrorCode.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandExecResult.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandInfo$CommandType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandInfo.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ICommandCallback.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/XSocketClient.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/AppMain.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/AppMain.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/bean/Message.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/bean/Message.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/bean/device/DeviceInfo.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/bean/device/DeviceInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/bean/ui/PageInfo.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/bean/ui/PageInfo.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/common/App.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/common/App.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/common/Config.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/common/Config.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/common/ErrorCode.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/common/ErrorCode.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController$1.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/controller/MainController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AdbCmdExecutor$DefaultShellOutputReceiver.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AdbCmdExecutor$DefaultShellOutputReceiver.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AdbCmdExecutor.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AdbCmdExecutor.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AdbCmdFormat.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AdbCmdFormat.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AndroidShell.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/AndroidShell.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/IDeviceShell.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/device/IDeviceShell.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/util/Logger.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/util/Logger.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/util/PageUtil.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/util/PageUtil.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ClientHandler.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ClientHandler.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandExecResult$ErrorCode.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandExecResult$ErrorCode.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandExecResult.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandExecResult.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandInfo$CommandType.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandInfo$CommandType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandInfo.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/CommandInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ICommandCallback.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/ICommandCallback.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/XSocketClient.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/xsocket/XSocketClient.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/.idea/misc.xml" afterPath="$PROJECT_DIR$/app-agent/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/build.gradle" afterPath="$PROJECT_DIR$/app-agent/app/build.gradle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/AgentServer.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/AgentServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/live/itrip/client/util/FFmpegFXImageDecoder.class" afterPath="$PROJECT_DIR$/client/target/classes/live/itrip/client/util/FFmpegFXImageDecoder.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/Main.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/vysor/StdOutDevice.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/vysor/StdOutDevice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/vysor/renderscript/YuvConverter.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/vysor/renderscript/YuvConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/vysor/virtualdisplay/EncoderDevice.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/vysor/virtualdisplay/EncoderDevice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/xsocket/ClientSocket.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/xsocket/ClientSocket.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/xsocket/ServerHandler.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/xsocket/ServerHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/xsocket/XSocketServer.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/xsocket/XSocketServer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/callback/PerformanceRequestCallback.java" afterPath="$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/callback/PerformanceRequestCallback.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.idea/compiler.xml" afterPath="$PROJECT_DIR$/client/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.idea/encodings.xml" afterPath="$PROJECT_DIR$/client/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.idea/misc.xml" afterPath="$PROJECT_DIR$/client/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.idea/modules.xml" afterPath="$PROJECT_DIR$/client/.idea/modules.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/.idea/workspace.xml" afterPath="$PROJECT_DIR$/client/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/client.iml" afterPath="$PROJECT_DIR$/client/client.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/pom.xml" afterPath="$PROJECT_DIR$/client/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/AppMain.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/AppMain.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/bean/device/DeviceInfo.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/bean/device/DeviceInfo.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/common/App.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/common/App.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/controller/MainController.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/controller/MainController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/xsocket/ClientHandler.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/xsocket/ClientHandler.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/xsocket/XSocketClient.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/xsocket/XSocketClient.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/device/AdbCmdFormat.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/device/AdbCmdFormat.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/device/AndroidShell.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/device/AndroidShell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/device/IDeviceShell.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/device/IDeviceShell.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/util/FFmpegFXImageDecoder.java" afterPath="$PROJECT_DIR$/client/src/main/java/live/itrip/client/util/FFmpegFXImageDecoder.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/main/resources/ui/main.fxml" afterPath="$PROJECT_DIR$/client/src/main/resources/ui/main.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/target/classes/ui/main.fxml" afterPath="$PROJECT_DIR$/client/target/classes/ui/main.fxml" />
     </list>
@@ -65,33 +58,7 @@
     <favorites_list name="Android-AutoTest" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="AgentServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/AgentServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="248">
-              <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScreenRecorder.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/recorder/ScreenRecorder.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#2019#2020#0" expanded="false" />
-                <element signature="e#2050#2051#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app-agent/app/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
@@ -105,8 +72,8 @@
       <file leaf-file-name="build.gradle" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app-agent/app/build.gradle">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="238">
+              <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -115,13 +82,9 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-51">
-              <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#25322#25323#0" expanded="false" />
-                <element signature="e#25411#25412#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="2856">
+              <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -168,7 +131,7 @@
     </navigator>
     <panes>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -187,9 +150,161 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="live" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="itrip" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Android-AutoTest" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app-agent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="AndroidView">
         <subPane />
       </pane>
@@ -472,21 +587,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="0" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23883928" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -514,40 +629,40 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/AgentServer.java">
+    <entry file="file://$PROJECT_DIR$/app-agent/app/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="248">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="28" selection-end-line="25" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+        <state relative-caret-position="17">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app-agent/app/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="206" column="0" selection-start-line="206" selection-start-column="0" selection-end-line="206" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#25322#25323#0" expanded="false" />
-            <element signature="e#25411#25412#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="2856">
+          <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/recorder/ScreenRecorder.java">
+    <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/AgentServer.java" />
+    <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="38" column="29" selection-start-line="38" selection-start-column="29" selection-end-line="38" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2019#2020#0" expanded="false" />
-            <element signature="e#2050#2051#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="2856">
+          <caret line="201" column="0" selection-start-line="201" selection-start-column="0" selection-end-line="201" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app-agent/app/src/main/java/live/itrip/agent/recorder/ScreenRecorder.java" />
     <entry file="file://$PROJECT_DIR$/app-agent/app/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -560,14 +675,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app-agent/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+        <state relative-caret-position="238">
+          <caret line="17" column="9" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
           <folding />
         </state>
       </provider>

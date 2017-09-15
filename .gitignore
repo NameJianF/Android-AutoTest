@@ -9,7 +9,6 @@ app-agent/captures
 app-agent/.externalNativeBuild
 app-agent/.idea/
 
-
 client/*.iml
 client/.gradle
 client/local.properties
@@ -19,3 +18,4 @@ client/.DS_Store
 client/build
 client/captures
 client/.externalNativeBuild
+client/target
