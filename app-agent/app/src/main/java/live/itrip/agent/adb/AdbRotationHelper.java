@@ -1,4 +1,4 @@
-package live.itrip.agent;
+package live.itrip.agent.adb;
 
 /**
  * Created by Feng on 2017/9/14.

@@ -1,5 +1,10 @@
 package live.itrip.agent;
 
+import android.app.Activity;
+import android.app.Application;
+import android.app.Instrumentation;
+import android.content.ComponentName;
+import android.content.Intent;
 import android.graphics.Point;
 import android.hardware.input.InputManager;
 import android.os.Build;
@@ -7,6 +12,7 @@ import android.os.IBinder;
 import android.os.IPowerManager;
 import android.os.Looper;
 import android.os.RemoteException;
+import android.support.v4.*;
 import android.util.Log;
 import android.view.IRotationWatcher;
 import android.view.IWindowManager;
@@ -27,16 +33,22 @@ import com.koushikdutta.async.http.server.HttpServerRequestCallback;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
 
 import live.itrip.agent.callback.DeviceInfoRequestCallback;
 import live.itrip.agent.callback.PerformanceRequestCallback;
 import live.itrip.agent.callback.ScreenshotRequestCallback;
+import live.itrip.agent.dump.gfx.GfxInfoReader;
+import live.itrip.agent.dump.surfaceflinger.SurfaceFlingerReader;
+import live.itrip.agent.handler.BroadcastHandler;
+import live.itrip.agent.handler.PerformanceHandler;
 import live.itrip.agent.handler.WebSocketInputHandler;
 import live.itrip.agent.handler.WebSocketPerformanceHandler;
-import live.itrip.agent.handler.fps.Audience;
-import live.itrip.agent.handler.fps.Metronome;
+import live.itrip.agent.util.ProcessUtils;
 import live.itrip.agent.virtualdisplay.SurfaceControlVirtualDisplayFactory;
 
 /**
@@ -52,13 +64,12 @@ public class Main {
     private static IPowerManager powerManager;
     private static Method injectInputEventMethod;
     private static DataSink webSocketDataSink;
-    private static Metronome metronome; // get fps
+//    private static FPSSampler metronome; // get fps
 
     public static Object activityManager;
     public static StdOutDevice currentDevice;
     public static Method broadcastIntent;
     public static boolean isImeRunning;
-    public static double lastFPSValue = 0d;
 
     public static void main(String[] args) throws Exception {
         Log.e(LOGTAG, "main started...");
@@ -210,7 +221,7 @@ public class Main {
 
         httpServer.listen(server, 53516);
 
-        // for fps
+        // test
         initForFPS();
 
         Log.e(LOGTAG, "main entry started...");
@@ -224,6 +235,21 @@ public class Main {
         inputManager = (InputManager) InputManager.class.getDeclaredMethod("getInstance", new Class[0]).invoke(null, new Object[0]);
         powerManager = IPowerManager.Stub.asInterface((IBinder) getServiceMethod.invoke(null, new Object[]{"power"}));
         activityManager = Class.forName("android.app.ActivityManagerNative").getDeclaredMethod("getDefault", new Class[0]).invoke(null, new Object[0]);
+        for (Method method2 : activityManager.getClass().getDeclaredMethods()) {
+            if (method2.getName().equals("broadcastIntent")) {
+                broadcastIntent = method2;
+                if (broadcastIntent.getParameterTypes().length == 13 || broadcastIntent.getParameterTypes().length == 11 || broadcastIntent.getParameterTypes().length == 12) {
+                    Log.i(LOGTAG, "Found IME hooks.");
+                } else {
+                    Log.i(LOGTAG, "Found invalid IME hooks.");
+                    broadcastIntent = null;
+                }
+                if (broadcastIntent == null) {
+                    Log.i(LOGTAG, "No IME hooks.");
+                }
+
+            }
+        }
 
         MotionEvent.class.getDeclaredMethod("obtain", new Class[0]).setAccessible(true);
         injectInputEventMethod = InputManager.class.getMethod("injectInputEvent", new Class[]{InputEvent.class, Integer.TYPE});
@@ -231,31 +257,87 @@ public class Main {
     }
 
     private static void initForFPS() {
-        metronome = new Metronome();
-        metronome.setInterval(1000); // 1s
-        metronome.addListener(new Audience() {
+
+        //test data
+//        startActivity("net.oschina.app", "net.oschina.app.LaunchActivity");
+
+        for (Method method2 : activityManager.getClass().getDeclaredMethods()) {
+            Log.d(Main.LOGTAG, "Method >>>>>>>>>>>>>> " + method2.getName());
+        }
+
+        new Thread(new Runnable() {
             @Override
-            public void heartbeat(double fps) {
-//                Log.d(Main.LOGTAG, "FPS:" + fps);
-                lastFPSValue = fps;
+            public void run() {
+                while (true) {
+                    try {
+                        Log.d(Main.LOGTAG, "call mem >>>>>>>>>>>>>> ");
+                        String packageName = "net.oschina.app";
+
+                        Log.d(Main.LOGTAG, "NetFlow >>>>>>>>>>>>>> " + PerformanceHandler.getAppNetFlow(Main.activityManager, packageName));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    try {
+                        Thread.sleep(3000);
+                    } catch (InterruptedException e) {
+                        Log.d(Main.LOGTAG, e.getMessage());
+                    }
+                }
             }
-        });
-        metronome.start();
+        }).start();
+        Log.d(Main.LOGTAG, "fps Thread start >>>>>>>>>>>>>> ");
 
     }
 
-//    private static void getFPS() {
-//        if (metronome != null) {
-//            metronome.start();
-//        }
-//    }
-//
-//    private static void stopFPS() {
-//        if (metronome != null) {
-//            metronome.stop();
-//        }
-//    }
 
+    public static void attachContext() throws Exception {
+        // 先获取到当前的ActivityThread对象
+        Class<?> activityThreadClass = Class.forName("android.app.ActivityThread");
+        Method currentActivityThreadMethod = activityThreadClass.getDeclaredMethod("currentActivityThread");
+        currentActivityThreadMethod.setAccessible(true);
+        Object currentActivityThread = currentActivityThreadMethod.invoke(Main.activityManager);
+
+        if (currentActivityThread == null) {
+            Log.d(Main.LOGTAG, "activityThreadClass is null >>>>>>>>>>>>>> ");
+
+        }
+
+        // 拿到原始的 mInstrumentation字段
+        Field mInstrumentationField = activityThreadClass.getDeclaredField("mInstrumentation");
+        mInstrumentationField.setAccessible(true);
+        Instrumentation mInstrumentation = (Instrumentation) mInstrumentationField.get(currentActivityThread);
+
+        if (mInstrumentation == null) {
+            Log.e(LOGTAG, "mInstrumentation is null ...");
+
+        } else {
+            Log.e(LOGTAG, "mInstrumentation ..." + mInstrumentation.getContext().getPackageName());
+
+        }
+
+//        // 创建代理对象
+//        Instrumentation evilInstrumentation = new EvilInstrumentation(mInstrumentation);
+//
+//        // 偷梁换柱
+//        mInstrumentationField.set(currentActivityThread, evilInstrumentation);
+    }
+
+
+    public static void startActivity(String pkg, String activity) {
+
+        Intent intent = new Intent().setComponent(new ComponentName(BuildConfig.APPLICATION_ID, "live.itrip.agent.receiver.StartActivityReceiver"));
+        intent.putExtra("pkg", pkg);
+        intent.putExtra("activity", activity);
+
+        try {
+            Log.d(Main.LOGTAG, "broadcastIntent >>>>>>>>>>>>>> " + broadcastIntent.getParameterTypes().length);
+            Main.broadcastIntent.invoke(Main.activityManager, new Object[]{null, intent, null, null, Integer.valueOf(0), null, null, null, Integer.valueOf(-1), null, Boolean.valueOf(true), Boolean.valueOf(false), Integer.valueOf(-2)});
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     private static void writer(BufferedDataSink sink, IWindowManager wm) {
         if (currentDevice != null) {
@@ -292,4 +374,6 @@ public class Main {
     private static boolean hasNavBar() {
         return KeyCharacterMap.deviceHasKey(4) && KeyCharacterMap.deviceHasKey(3);
     }
+
+
 }

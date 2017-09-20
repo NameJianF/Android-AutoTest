@@ -28,7 +28,7 @@ import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import live.itrip.agent.AdbRotationHelper;
+import live.itrip.agent.adb.AdbRotationHelper;
 import live.itrip.agent.Main;
 import live.itrip.agent.virtualdisplay.SurfaceControlVirtualDisplayFactory;
 

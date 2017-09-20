@@ -1,15 +1,16 @@
 package live.itrip.agent.handler;
 
-import android.app.ActivityManager;
-import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.lang.reflect.Method;
+import java.io.IOException;
+import java.text.ParseException;
 
-import live.itrip.agent.ExecCommands;
-import live.itrip.agent.Main;
+import live.itrip.agent.dump.gfx.GfxInfoReader;
+import live.itrip.agent.handler.cpu.CpuSampler;
+import live.itrip.agent.handler.memory.MemorySampler;
+import live.itrip.agent.handler.network.NetWorkSampler;
+import live.itrip.agent.util.ProcessUtils;
 
 /**
  * Created by Feng on 2017/9/14.
@@ -17,31 +18,68 @@ import live.itrip.agent.Main;
 
 public class PerformanceHandler {
 
-    public static JSONObject getMemoryInfo(Object activityManager, String packageName) {
-        JSONObject objMem = new JSONObject();
-        try {
-            for (Method method2 : activityManager.getClass().getDeclaredMethods()) {
-                if (method2.getName().equals("getMemoryInfo")) {
-                    ActivityManager.MemoryInfo memoryInfo = new ActivityManager.MemoryInfo();
-                    activityManager.getClass().getMethod("getMemoryInfo", ActivityManager.MemoryInfo.class).invoke(activityManager, memoryInfo);
-                    objMem.put("totalMem", memoryInfo.totalMem);//总内存
-                    objMem.put("availMem", memoryInfo.availMem);//可用内存
-                    objMem.put("lowMemory", memoryInfo.lowMemory);//是否达到最低内存
-                    objMem.put("threshold", memoryInfo.threshold);//临界值，达到这个值，进程就要被杀死
-//                object.put("MemoryInfo", objMem);
-                    break;
-                }
-            }
-        } catch (Exception e) {
-            Log.e(Main.LOGTAG, e.getMessage(), e);
-        }
-        return objMem;
+    /**
+     * 设备内存信息
+     *
+     * @param activityManager
+     * @return
+     */
+    public static JSONObject getDeviceMemoryInfo(Object activityManager) {
+        return MemorySampler.getDeviceMemoryInfo(activityManager);
     }
 
-    public static JSONObject getFPSInfos(String packageName) throws JSONException {
+    /**
+     * 获取App内存占用 kb
+     *
+     * @param activityManager
+     * @param packageName
+     * @return
+     */
+    public static JSONObject getAppMemoryInfo(Object activityManager, String packageName) throws JSONException {
+        return MemorySampler.getAppMemoryInfo(activityManager, packageName);
+    }
+
+    /**
+     * get cpu info
+     *
+     * @param activityManager
+     * @param packageName
+     * @return
+     */
+    public static String getAppCpuInfo(Object activityManager, String packageName) {
+        int pid = ProcessUtils.getPidByPackageName(activityManager, packageName);
+        StringBuilder stringBuilder = CpuSampler.getInstance().getCpuRateInfo(pid);
+        return stringBuilder.toString();
+    }
+
+    /**
+     * 获取 app fps
+     *
+     * @param packageName
+     * @return
+     * @throws JSONException
+     * @throws IOException
+     * @throws ParseException
+     */
+    public static JSONObject getFPSInfos(String packageName) throws JSONException, IOException, ParseException {
+
+        GfxInfoReader.GfxInfoResult result = new GfxInfoReader("", packageName).read();
 
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("fps", Main.lastFPSValue);
+        jsonObject.put("totalFrames", result.getFrameCount());
+        jsonObject.put("jankyFrames", result.getJankyCount());
+        jsonObject.put("fps", result.getFps());
         return jsonObject;
+    }
+
+    /**
+     * 获取网络流量信息
+     *
+     * @param packageName
+     * @return
+     * @throws JSONException
+     */
+    public static JSONObject getAppNetFlow(Object activityManager, String packageName) throws JSONException {
+        return NetWorkSampler.getAppNetFlow(activityManager, packageName);
     }
 }

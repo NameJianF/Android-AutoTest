@@ -64,14 +64,11 @@ public class SurfaceControlVirtualDisplayFactory implements VirtualDisplayFactor
     public VirtualDisplay createVirtualDisplay(String name, int width, int height, int dpi, int flags, Surface surface, Handler handler) {
         try {
             Class surfaceControlClass = Class.forName("android.view.SurfaceControl");
-            Class cls = surfaceControlClass;
-            final IBinder token = (IBinder) cls.getDeclaredMethod("createDisplay", new Class[]{String.class, Boolean.TYPE}).invoke(null, new Object[]{name, Boolean.valueOf(false)});
-            cls = surfaceControlClass;
-            Method setDisplaySurfaceMethod = cls.getDeclaredMethod("setDisplaySurface", new Class[]{IBinder.class, Surface.class});
-            cls = surfaceControlClass;
-            final Method setDisplayProjectionMethod = cls.getDeclaredMethod("setDisplayProjection", new Class[]{IBinder.class, Integer.TYPE, Rect.class, Rect.class});
-            cls = surfaceControlClass;
-            Method setDisplayLayerStackMethod = cls.getDeclaredMethod("setDisplayLayerStack", new Class[]{IBinder.class, Integer.TYPE});
+//            Class cls = surfaceControlClass;
+            final IBinder token = (IBinder) surfaceControlClass.getDeclaredMethod("createDisplay", new Class[]{String.class, Boolean.TYPE}).invoke(null, new Object[]{name, Boolean.valueOf(false)});
+            Method setDisplaySurfaceMethod = surfaceControlClass.getDeclaredMethod("setDisplaySurface", new Class[]{IBinder.class, Surface.class});
+            final Method setDisplayProjectionMethod = surfaceControlClass.getDeclaredMethod("setDisplayProjection", new Class[]{IBinder.class, Integer.TYPE, Rect.class, Rect.class});
+            Method setDisplayLayerStackMethod = surfaceControlClass.getDeclaredMethod("setDisplayLayerStack", new Class[]{IBinder.class, Integer.TYPE});
             final Method openTransactionMethod = surfaceControlClass.getDeclaredMethod("openTransaction", new Class[0]);
             final Method closeTransactionMethod = surfaceControlClass.getDeclaredMethod("closeTransaction", new Class[0]);
             final Method getServiceMethod = Class.forName("android.os.ServiceManager").getDeclaredMethod("getService", new Class[]{String.class});
@@ -82,8 +79,7 @@ public class SurfaceControlVirtualDisplayFactory implements VirtualDisplayFactor
             setDisplayProjectionMethod.invoke(null, new Object[]{token, Integer.valueOf(0), layerStackRect, this.displayRect});
             setDisplayLayerStackMethod.invoke(null, new Object[]{token, Integer.valueOf(0)});
             closeTransactionMethod.invoke(null, new Object[0]);
-            cls = surfaceControlClass;
-            final Method destroyDisplayMethod = cls.getDeclaredMethod("destroyDisplay", new Class[]{IBinder.class});
+            final Method destroyDisplayMethod = surfaceControlClass.getDeclaredMethod("destroyDisplay", new Class[]{IBinder.class});
             return new VirtualDisplay() {
                 IRotationWatcher watcher;
                 IWindowManager wm = Stub.asInterface((IBinder) getServiceMethod.invoke(null, new Object[]{"window"}));

@@ -231,16 +231,16 @@ public class MainController implements Initializable {
                 Logger.error("Unable to say hello to " + name, clientService.getException()));
         clientService.restart();
 
-        for (int i = 0; i < 10; i++) {
-            JSONObject home = new JSONObject();
-            home.put("type", "memory");
-            home.put("packageName", "live.itrip.agent");
-            clientService.sendText(home.toString());
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+        for (int i = 0; i < 100; i++) {
+//            JSONObject home = new JSONObject();
+//            home.put("type", "memory");
+//            home.put("packageName", "live.itrip.agent");
+//            clientService.sendText(home.toString());
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
             JSONObject back = new JSONObject();
             back.put("type", "fps");
             back.put("packageName", "live.itrip.agent");
@@ -249,19 +249,19 @@ public class MainController implements Initializable {
             clientService.sendText(back.toString());
 
 
+//            try {
+//                Thread.sleep(500);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//            JSONObject cpu = new JSONObject();
+//            cpu.put("type", "cpu");
+//            cpu.put("packageName", "live.itrip.agent");
+//            cpu.put("clientX", 300);
+//            cpu.put("clientY", 400);
+//            clientService.sendText(cpu.toString());
             try {
                 Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-            JSONObject cpu = new JSONObject();
-            cpu.put("type", "cpu");
-            cpu.put("packageName", "live.itrip.agent");
-            cpu.put("clientX", 300);
-            cpu.put("clientY", 400);
-            clientService.sendText(cpu.toString());
-            try {
-                Thread.sleep(5000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

@@ -40,7 +40,7 @@ public class PerformanceRequestCallback implements HttpServerRequestCallback {
         Log.i(Main.LOGTAG, "performance success");
         try {
             response.setContentType("application/json;charset=utf-8");
-            Object activityManager = Class.forName("android.app.ActivityManagerNative").getDeclaredMethod("getDefault", new Class[0]).invoke(null, new Object[0]);
+            Object activityManager = Main.activityManager;
             String conent = "no datas";
             JSONObject object = new JSONObject();
 

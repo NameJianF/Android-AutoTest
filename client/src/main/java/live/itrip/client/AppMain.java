@@ -79,5 +79,4 @@ public class AppMain extends Application {
         Config.CLIENT_VERSION = prop.getProperty("client.version");
         Config.printValues();
     }
-
 }
