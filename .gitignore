@@ -19,3 +19,4 @@ client/build
 client/captures
 client/.externalNativeBuild
 client/target
+client/out
