@@ -2,21 +2,19 @@ package live.itrip.client.device;
 
 import com.android.ddmlib.AndroidDebugBridge;
 import com.android.ddmlib.IDevice;
-import com.android.ddmlib.IShellOutputReceiver;
-import live.itrip.client.bean.Message;
 import live.itrip.client.bean.device.DeviceInfo;
+import live.itrip.client.service.DirectoryService;
 import live.itrip.client.util.Logger;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Feng on 2017/6/13.
  */
 public class DeviceManager {
-    private DeviceInfo deviceInfo;
+    private List<DeviceInfo> deviceList = new ArrayList<>();
     private DeviceChangeListener deviceChangeListener = new DeviceChangeListener();
-
     private static DeviceManager instance;
 
     public static DeviceManager getInstance() {
@@ -26,8 +24,12 @@ public class DeviceManager {
         return instance;
     }
 
-    public DeviceInfo getDeviceInfo() {
-        return deviceInfo;
+    public DeviceInfo getDeviceInfo(int index) {
+        return deviceList.get(index);
+    }
+
+    public List<DeviceInfo> getDeviceList() {
+        return deviceList;
     }
 
     public void start() {
@@ -49,19 +51,28 @@ public class DeviceManager {
         public void deviceConnected(IDevice device) {
             // device.isOnline() maybe false
             if (device.isOnline()) {
-                if (deviceInfo == null) {
-                    deviceInfo = new DeviceInfo(device);
+                for (DeviceInfo info : deviceList) {
+                    if (info.getDevice().getSerialNumber().equalsIgnoreCase(device.getSerialNumber())) {
+                        // 已存在,remove
+                        deviceList.remove(info);
+                        break;
+                    }
                 }
+                deviceList.add(new DeviceInfo(device));
                 Logger.info("device connected : " + device.getSerialNumber());
-
             }
         }
 
         @Override
         public void deviceDisconnected(IDevice device) {
+            // 设备断开
             if (device != null) {
-                if (deviceInfo != null) {
-                    deviceInfo.setDevice(device);
+                for (DeviceInfo info : deviceList) {
+                    if (info.getDevice().getSerialNumber().equalsIgnoreCase(device.getSerialNumber())) {
+                        // 已存在,remove
+                        deviceList.remove(info);
+                        break;
+                    }
                 }
                 Logger.info("device disconnected : " + device.getSerialNumber());
 

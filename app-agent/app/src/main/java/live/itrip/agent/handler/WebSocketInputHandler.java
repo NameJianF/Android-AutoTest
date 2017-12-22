@@ -10,7 +10,6 @@ import android.os.RemoteException;
 import android.os.SystemClock;
 import android.support.v4.BuildConfig;
 import android.support.v4.view.InputDeviceCompat;
-import android.util.Log;
 import android.view.IWindowManager;
 import android.view.KeyCharacterMap;
 import android.view.KeyEvent;
@@ -28,71 +27,95 @@ import java.lang.reflect.Method;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
-import live.itrip.agent.adb.AdbRotationHelper;
 import live.itrip.agent.Main;
+import live.itrip.agent.StdOutDevice;
+import live.itrip.agent.adb.AdbRotationHelper;
+import live.itrip.agent.util.InternalApi;
+import live.itrip.agent.util.LogUtils;
 import live.itrip.agent.virtualdisplay.SurfaceControlVirtualDisplayFactory;
 
 /**
- * Created by Feng on 2017/9/14.
+ * Created on 2017/9/14.
+ *
+ * @author JianF
  */
 
 public class WebSocketInputHandler {
-
+    private static final String KEY_WAKEUP = "wakeup";
+    private static final String KEY_MOUSE_MOVE = "mousemove";
+    private static final String KEY_MOUSE_UP = "mouseup";
+    private static final String KEY_MOUSE_DOWN = "mousedown";
+    private static final String KEY_ROTATE = "rotate";
+    private static final String KEY_SCROLL = "scroll";
+    private static final String KEY_HOME = "home";
+    private static final String KEY_DELETE = "delete";
+    private static final String KEY_BACKSPACE = "backspace";
+    private static final String KEY_UP = "up";
+    private static final String KEY_DOWN = "down";
+    private static final String KEY_LEFT = "left";
+    private static final String KEY_RIGHT = "right";
+    private static final String KEY_BACK = "back";
+    private static final String KEY_MENU = "menu";
+    private static final String KEY_KEYCODE = "keycode";
+    private static final String KEY_KEY_CHAR = "keychar";
+    private static final String KEY_BITRATE = "bitrate";
+    private static final String KEY_SYNC_FRAME = "sync-frame";
 
     public static WebSocket.StringCallback createWebSocketHandler(
             Method injectInputEventMethod,
             IWindowManager wm,
             InputManager im,
             KeyCharacterMap kcm,
-            IPowerManager pm) {
+            IPowerManager pm,
+            StdOutDevice device) {
 
         final InputManager inputManager = im;
         final Method method = injectInputEventMethod;
         final IPowerManager iPowerManager = pm;
         final IWindowManager iWindowManager = wm;
         final KeyCharacterMap keyCharacterMap = kcm;
+        final StdOutDevice stdOutDevice = device;
 
         return new WebSocket.StringCallback() {
             boolean authenticated = true;
             long downTime;
             boolean isDown;
 
+            @Override
             public void onStringAvailable(String s) {
                 try {
-
-                    Log.i(Main.LOGTAG, "get message: " + s);
 
                     JSONObject jSONObject = new JSONObject(s);
                     String type = jSONObject.getString("type");
                     float clientX = (float) jSONObject.optDouble("clientX");
                     float clientY = (float) jSONObject.optDouble("clientY");
 
-                    if ("wakeup".equals(type)) {
+                    if (KEY_WAKEUP.equals(type)) {
                         WebSocketInputHandler.turnScreenOn(inputManager, method, iPowerManager);
                     } else if (!this.authenticated) {
-                        Log.e(Main.LOGTAG, "Command not allowed, not authenticated.");
-                    } else if ("mousemove".equals(type)) {
+                        LogUtils.e("Command not allowed, not authenticated.");
+                    } else if (KEY_MOUSE_MOVE.equals(type)) {
                         if (this.isDown) {
                             WebSocketInputHandler.injectMotionEvent(inputManager, method, InputDeviceCompat.SOURCE_TOUCHSCREEN, 2, this.downTime, this.downTime + jSONObject.optLong("downDelta", SystemClock.uptimeMillis() - this.downTime), clientX, clientY, 1.0f);
                         }
-                    } else if ("mouseup".equals(type)) {
+                    } else if (KEY_MOUSE_UP.equals(type)) {
                         if (this.isDown) {
                             this.isDown = false;
                             WebSocketInputHandler.injectMotionEvent(inputManager, method, InputDeviceCompat.SOURCE_TOUCHSCREEN, 1, this.downTime, this.downTime + jSONObject.optLong("downDelta", SystemClock.uptimeMillis() - this.downTime), clientX, clientY, 1.0f);
                         }
-                    } else if ("mousedown".equals(type)) {
+                    } else if (KEY_MOUSE_DOWN.equals(type)) {
                         if (!this.isDown) {
                             this.isDown = true;
                             this.downTime = SystemClock.uptimeMillis();
                             WebSocketInputHandler.injectMotionEvent(inputManager, method, InputDeviceCompat.SOURCE_TOUCHSCREEN, 0, this.downTime, this.downTime, clientX, clientY, 1.0f);
                         }
-                    } else if ("rotate".equals(type)) {
+                    } else if (KEY_ROTATE.equals(type)) {
                         if (iWindowManager.getRotation() == Surface.ROTATION_0) {
                             AdbRotationHelper.forceRotation(Surface.ROTATION_90);
                         } else {
                             AdbRotationHelper.forceRotation(Surface.ROTATION_0);
                         }
-                    } else if ("scroll".equals(type)) {
+                    } else if (KEY_SCROLL.equals(type)) {
                         long when = SystemClock.uptimeMillis();
                         float x = clientX;
                         float y = clientY;
@@ -109,66 +132,76 @@ public class WebSocketInputHandler {
                         pc[0].setAxisValue(9, (float) jSONObject.optDouble("deltaY"));
                         MotionEvent event = MotionEvent.obtain(when, when, 8, 1, pp, pc, 0, 0, 1.0f, 1.0f, 0, 0, InputDeviceCompat.SOURCE_TOUCHSCREEN, 0);
                         method.invoke(inputManager, new Object[]{event, Integer.valueOf(0)});
-                    } else if ("home".equals(type)) {
+                    } else if (KEY_HOME.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_HOME, false);
-                    } else if ("delete".equals(type)) {
+                    } else if (KEY_DELETE.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_FORWARD_DEL, false);
-                    } else if ("backspace".equals(type)) {
+                    } else if (KEY_BACKSPACE.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_DEL, false);
-                    } else if ("up".equals(type)) {
+                    } else if (KEY_UP.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_DPAD_UP, false);
-                    } else if ("down".equals(type)) {
+                    } else if (KEY_DOWN.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_DPAD_DOWN, false);
-                    } else if ("left".equals(type)) {
+                    } else if (KEY_LEFT.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_DPAD_LEFT, false);
-                    } else if ("right".equals(type)) {
+                    } else if (KEY_RIGHT.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_DPAD_RIGHT, false);
-                    } else if ("back".equals(type)) {
+                    } else if (KEY_BACK.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_BACK, false);
-                    } else if ("menu".equals(type)) {
+                    } else if (KEY_MENU.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_MENU, false);
-                    } else if ("keycode".equals(type)) {
+                    } else if (KEY_KEYCODE.equals(type)) {
                         WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, jSONObject.getInt("keycode"), jSONObject.optBoolean("shift", false));
-                    } else if ("keychar".equals(type)) {
-                        Log.i(Main.LOGTAG, s);
-                        if (Main.isImeRunning && Main.broadcastIntent != null) {
-                            Intent intent = new Intent().setComponent(new ComponentName(BuildConfig.APPLICATION_ID, "com.koushikdutta.vysor.CharCodeReceiver"));
-                            intent.putExtra("keychar", jSONObject.getString("keychar"));
+                    } else if (KEY_KEY_CHAR.equals(type)) {
+                        LogUtils.i(s);
+                        if (Main.isImeRunning && InternalApi.getBroadcastIntent() != null) {
+                            Intent intent = new Intent().setComponent(new ComponentName(BuildConfig.APPLICATION_ID, "live.itrip.agent.receiver.CharCodeReceiver"));
+                            intent.putExtra(KEY_KEY_CHAR, jSONObject.getString(KEY_KEY_CHAR));
                             try {
                                 BroadcastHandler.sendBroadcast(intent);
                                 return;
                             } catch (Throwable e) {
-                                Log.e(Main.LOGTAG, "Error invoking broadcast", e);
-                                Main.broadcastIntent = null;
+                                LogUtils.e("Error invoking broadcast", e);
+                                InternalApi.setBroadcastIntent(null);
                             }
                         }
-                        switch (jSONObject.getString("keychar").charAt(0)) {
+                        switch (jSONObject.getString(KEY_KEY_CHAR).charAt(0)) {
                             case '\r':
                                 WebSocketInputHandler.sendKeyEvent(inputManager, method, InputDeviceCompat.SOURCE_KEYBOARD, KeyEvent.KEYCODE_ENTER, false);
-                                return;
+                                break;
                             default:
-                                for (KeyEvent e2 : keyCharacterMap.getEvents(jSONObject.getString("keychar").toCharArray())) {
+                                for (KeyEvent e2 : keyCharacterMap.getEvents(jSONObject.getString(KEY_KEY_CHAR).toCharArray())) {
                                     WebSocketInputHandler.injectKeyEvent(inputManager, method, e2);
                                 }
-                                return;
+                                break;
                         }
-                    } else if ("bitrate".equals(type)) {
-                        int bitrate = jSONObject.optInt("bitrate", Main.currentDevice.getBitrate());
-                        if (Main.currentDevice != null && Build.VERSION.SDK_INT >= 19) {
-                            Main.currentDevice.setBitrate(bitrate);
+                    } else if (KEY_BITRATE.equals(type)) {
+                        int bitrate = jSONObject.optInt("bitrate", stdOutDevice.getBitrate());
+                        if (stdOutDevice != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                            stdOutDevice.setBitrate(bitrate);
                         }
-                    } else if (!"sync-frame".equals(type)) {
-                        Log.e(Main.LOGTAG, "Unknown: " + s);
-                    } else if (Main.currentDevice != null && Build.VERSION.SDK_INT >= 19) {
-                        Main.currentDevice.requestSyncFrame();
+                    } else if (!KEY_SYNC_FRAME.equals(type)) {
+                        LogUtils.e("Unknown: " + s);
+                    } else if (stdOutDevice != null && Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+                        stdOutDevice.requestSyncFrame();
                     }
                 } catch (Throwable e3) {
-                    Log.e(Main.LOGTAG, "input websocket", e3);
+                    LogUtils.e("input websocket", e3);
                 }
             }
         };
     }
 
+    /**
+     * 点亮设备屏幕
+     *
+     * @param im InputManager
+     * @param injectInputEventMethod injectInputEventMethod
+     * @param pm IPowerManager
+     * @throws RemoteException
+     * @throws InvocationTargetException
+     * @throws IllegalAccessException
+     */
     public static void turnScreenOn(InputManager im, Method injectInputEventMethod, IPowerManager pm) throws RemoteException, InvocationTargetException, IllegalAccessException {
         try {
             if (!pm.isScreenOn()) {

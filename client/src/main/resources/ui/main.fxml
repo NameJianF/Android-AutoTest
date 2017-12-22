@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.chart.CategoryAxis?>
-<?import javafx.scene.chart.LineChart?>
-<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0"
-            prefWidth="1000.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
+<BorderPane maxHeight="700.0" maxWidth="1200.0" minHeight="700.0" minWidth="1200.0" prefHeight="700.0"
+            prefWidth="1200.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="live.itrip.client.controller.MainController">
     <top>
         <HBox alignment="CENTER_LEFT" prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER_LEFT">
@@ -29,7 +35,7 @@
                         <Insets right="10.0"/>
                     </HBox.margin>
                 </Button>
-                <Button fx:id="btnStop" mnemonicParsing="false" onMouseClicked="#btnStopClick" text="停止">
+                <Button fx:id="btnSelectApp" mnemonicParsing="false" onMouseClicked="#btnSelectAppClick" text="选择测试App">
                     <HBox.margin>
                         <Insets right="10.0"/>
                     </HBox.margin>
@@ -44,12 +50,37 @@
                         <Insets right="10.0"/>
                     </HBox.margin>
                 </Button>
-                <Button fx:id="btnLive" mnemonicParsing="false" onMouseClicked="#btnLiveClick" text="实时">
+                <Button fx:id="btnLive" mnemonicParsing="false" onMouseClicked="#btnLiveClick" text="设备性能">
                     <HBox.margin>
                         <Insets right="10.0"/>
                     </HBox.margin>
                 </Button>
-
+                <Button fx:id="btnMonkey" mnemonicParsing="false" onMouseClicked="#btnMonkeyClick" text="Monkey">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnRobotium" mnemonicParsing="false" onMouseClicked="#btnRobotiumClick" text="Robotium">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnUiautomator" mnemonicParsing="false" onMouseClicked="#btnUiautomatorClick"
+                        text="Uiautomator">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnAppium" mnemonicParsing="false" onMouseClicked="#btnAppiumClick" text="Appium">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
+                <Button fx:id="btnStop" mnemonicParsing="false" onMouseClicked="#btnStopClick" text="停止">
+                    <HBox.margin>
+                        <Insets right="10.0"/>
+                    </HBox.margin>
+                </Button>
             </children>
             <BorderPane.margin>
                 <Insets left="10.0"/>
@@ -60,153 +91,181 @@
     <left>
         <VBox fx:id="vBox" prefHeight="504.0" prefWidth="310.0" BorderPane.alignment="CENTER">
             <children>
-                <ImageView fx:id="imageView" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <VBox.margin>
-                        <Insets bottom="2.0" left="5.0" right="5.0" top="2.0"/>
-                    </VBox.margin>
-                </ImageView>
+                <Pane fx:id="paneImage" prefHeight="533.0" prefWidth="300.0">
+                    <children>
+                        <ImageView fx:id="imageView" fitHeight="533.0" fitWidth="300.0" pickOnBounds="true"
+                                   preserveRatio="true">
+                            <image>
+                                <Image url="@../img/screenshot.jpg"/>
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
                 <!--<MediaView fx:id="mediaView" fitHeight="533.0" fitWidth="300.0" >-->
                 <!--</MediaView>-->
-                <HBox prefHeight="40.0" prefWidth="200.0"/>
+                <HBox alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="40.0" prefWidth="200.0">
+                    <VBox.margin>
+                        <Insets top="5.0"/>
+                    </VBox.margin>
+                    <children>
+                        <Button fx:id="btnBack" defaultButton="true" mnemonicParsing="false"
+                                onMouseClicked="#btnBackClick" prefHeight="30.0" prefWidth="80.0" text="BACK">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnHome" defaultButton="true" mnemonicParsing="false"
+                                onMouseClicked="#btnHomeClick" prefHeight="30.0" prefWidth="80.0" text="HOME">
+                            <HBox.margin>
+                                <Insets right="10.0"/>
+                            </HBox.margin>
+                        </Button>
+                        <Button fx:id="btnMenu" defaultButton="true" mnemonicParsing="false"
+                                onMouseClicked="#btnMenuClick" prefHeight="30.0" prefWidth="80.0" text="MENU"/>
+                    </children>
+                    <padding>
+                        <Insets left="10.0" right="10.0"/>
+                    </padding>
+                </HBox>
             </children>
+            <padding>
+                <Insets left="5.0" top="5.0"/>
+            </padding>
         </VBox>
     </left>
 
     <center>
-        <SplitPane dividerPositions="0.5" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0"
+        <SplitPane dividerPositions="0.829153605015674" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0"
                    BorderPane.alignment="CENTER">
             <items>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <TabPane layoutX="109.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0"
-                                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="2.0"
-                                 AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-                            <tabs>
-                                <Tab text="Device Information">
+                <TabPane fx:id="tabPane" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE"
+                         BorderPane.alignment="CENTER">
+                    <tabs>
+                        <Tab text="Device Information">
+                            <content>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
                                     <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <ListView fx:id="listViewDeviceInfo"/>
-                                            </content>
-                                        </ScrollPane>
+                                        <ListView fx:id="listViewDeviceInfo"/>
                                     </content>
-                                </Tab>
-                                <Tab text="App Information">
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                        <Tab text="App Information">
+                            <content>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
                                     <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <ListView fx:id="listViewAppInfo"/>
-                                            </content>
-                                        </ScrollPane>
+                                        <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                            <center>
+                                                <ListView fx:id="listViewAppInfo" prefHeight="389.0" prefWidth="888.0"/>
+                                            </center>
+                                            <top>
+                                                <AnchorPane prefHeight="89.0" prefWidth="888.0"
+                                                            BorderPane.alignment="CENTER">
+                                                    <children>
+                                                        <ImageView fx:id="imgAppLogo" fitHeight="80.0" fitWidth="80.0"
+                                                                   layoutX="14.0" layoutY="-18.0" pickOnBounds="true"
+                                                                   preserveRatio="true" AnchorPane.bottomAnchor="10.0"
+                                                                   AnchorPane.leftAnchor="20.0"
+                                                                   AnchorPane.topAnchor="10.0">
+                                                            <image>
+                                                                <Image url="@../img/logo.png"/>
+                                                            </image>
+                                                        </ImageView>
+                                                        <Label layoutX="133.0" layoutY="22.0" text="应用名称">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <TextField fx:id="textFieldAppLable" layoutX="200.0"
+                                                                   layoutY="20.0" maxWidth="160.0" minWidth="160.0"
+                                                                   prefWidth="160.0" editable="false"/>
+                                                        <Label layoutX="133.0" layoutY="60.0" text="包名">
+                                                            <font>
+                                                                <Font size="14.0"/>
+                                                            </font>
+                                                        </Label>
+                                                        <TextField fx:id="textFieldPkgName" layoutX="200.0"
+                                                                   layoutY="60.0" maxWidth="160.0" minWidth="160.0"
+                                                                   prefWidth="160.0" editable="false"/>
+                                                        <Label layoutX="389.0" layoutY="24.0" text="VersionCode"/>
+                                                        <TextField fx:id="textFieldVerCode" layoutX="473.0"
+                                                                   layoutY="20.0" maxWidth="90.0" minWidth="90.0"
+                                                                   prefHeight="23.0" prefWidth="90.0" editable="false"/>
+                                                        <Label layoutX="387.0" layoutY="65.0" text="VersionName"/>
+                                                        <TextField fx:id="textFieldVerName" layoutX="473.0"
+                                                                   layoutY="60.0" maxWidth="90.0" minWidth="90.0"
+                                                                   prefHeight="23.0" prefWidth="90.0" editable="false"/>
+                                                        <Label layoutX="594.0" layoutY="24.0" text="MinSDKVersion"/>
+                                                        <TextField fx:id="textFieldMinSDK" layoutX="708.0"
+                                                                   layoutY="20.0" maxWidth="125.0" minWidth="125.0"
+                                                                   prefHeight="23.0" prefWidth="125.0"
+                                                                   editable="false"/>
+                                                        <Label layoutX="594.0" layoutY="65.0" text="TargetSDKVersion"/>
+                                                        <TextField fx:id="textFieldTargetSDK" layoutX="708.0"
+                                                                   layoutY="60.0" maxWidth="125.0" minWidth="125.0"
+                                                                   prefHeight="23.0" prefWidth="125.0"
+                                                                   editable="false"/>
+                                                    </children>
+                                                </AnchorPane>
+                                            </top>
+                                        </BorderPane>
                                     </content>
-                                </Tab>
-                                <Tab text="Memory">
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Performance">
+                            <content>
+                                <GridPane fx:id="gridPane" alignment="CENTER" gridLinesVisible="true"
+                                          style="-fx-background-color: #e2e2e2;">
+                                    <columnConstraints>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0"/>
+                                    </columnConstraints>
+                                    <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                                    </rowConstraints>
+                                </GridPane>
+                            </content>
+                        </Tab>
+                        <Tab text="Logcat">
+                            <content>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
                                     <content>
-                                        <ScrollPane fx:id="scrollPaneMemory" fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <LineChart fx:id="lineChartMemory" >
-                                                    <xAxis>
-                                                        <NumberAxis side="BOTTOM"/>
-                                                    </xAxis>
-                                                    <yAxis>
-                                                        <NumberAxis side="LEFT" label="Memory(KB)"/>
-                                                    </yAxis>
-                                                </LineChart>
-                                            </content>
-                                        </ScrollPane>
+                                        <TableView fx:id="tableViewLogcat" prefHeight="200.0" prefWidth="200.0">
+                                            <columns>
+                                                <TableColumn fx:id="tableColumnTime" prefWidth="126.0" text="Time"/>
+                                                <TableColumn fx:id="tableColumnLevel" prefWidth="66.0" text="Level"/>
+                                                <TableColumn fx:id="tableColumnTAG" prefWidth="104.0" text="TAG"/>
+                                                <TableColumn fx:id="tableColumnPID" prefWidth="79.0" text="PID"/>
+                                                <TableColumn fx:id="tableColumnTID" prefWidth="67.0" text="TID"/>
+                                                <TableColumn fx:id="tableColumnText" prefWidth="600.0" text="Text"/>
+                                            </columns>
+                                        </TableView>
                                     </content>
-                                </Tab>
-                                <Tab text="CPU">
-                                    <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <LineChart>
-                                                    <xAxis>
-                                                        <CategoryAxis side="BOTTOM"/>
-                                                    </xAxis>
-                                                    <yAxis>
-                                                        <NumberAxis side="LEFT"/>
-                                                    </yAxis>
-                                                </LineChart>
-                                            </content>
-                                        </ScrollPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="NetWork">
-                                    <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <LineChart>
-                                                    <xAxis>
-                                                        <CategoryAxis side="BOTTOM"/>
-                                                    </xAxis>
-                                                    <yAxis>
-                                                        <NumberAxis side="LEFT"/>
-                                                    </yAxis>
-                                                </LineChart>
-                                            </content>
-                                        </ScrollPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="GPU">
-                                    <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <LineChart>
-                                                    <xAxis>
-                                                        <CategoryAxis side="BOTTOM"/>
-                                                    </xAxis>
-                                                    <yAxis>
-                                                        <NumberAxis side="LEFT"/>
-                                                    </yAxis>
-                                                </LineChart>
-                                            </content>
-                                        </ScrollPane>
-                                    </content>
-                                </Tab>
-                            </tabs>
-                        </TabPane>
-                    </children>
-                </AnchorPane>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-                    <children>
-                        <TabPane layoutX="71.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0"
-                                 tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="2.0"
-                                 AnchorPane.leftAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0">
-                            <tabs>
-                                <Tab text="Logcat">
-                                    <content>
-                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
-                                                    prefWidth="200.0"/>
-                                    </content>
-                                </Tab>
-                                <Tab text="Tombstones">
-                                    <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <TextArea editable="false"/>
-                                            </content>
-                                        </ScrollPane>
-                                    </content>
-                                </Tab>
-                                <Tab text="ANR Traces">
-                                    <content>
-                                        <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
-                                            <content>
-                                                <TextArea editable="false"/>
-                                            </content>
-                                        </ScrollPane>
-                                    </content>
-                                </Tab>
-                            </tabs>
-                        </TabPane>
-                    </children>
-                </AnchorPane>
+                                </ScrollPane>
+                            </content>
+                        </Tab>
+                        <Tab text="ANR Traces">
+                            <content>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0"/>
+                            </content>
+                        </Tab>
+                        <Tab text="Tombstones">
+                            <content>
+                                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0"/>
+                            </content>
+                        </Tab>
+                    </tabs>
+                </TabPane>
+                <ScrollPane fitToHeight="true" fitToWidth="true" minHeight="0.0" minWidth="0.0">
+                    <content>
+                        <TextArea fx:id="textAreaClientLog"/>
+                    </content>
+                </ScrollPane>
             </items>
         </SplitPane>
     </center>
-
     <bottom>
         <Pane prefHeight="30.0" prefWidth="200.0" BorderPane.alignment="CENTER"/>
     </bottom>

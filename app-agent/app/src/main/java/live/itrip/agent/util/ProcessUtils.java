@@ -1,31 +1,45 @@
 package live.itrip.agent.util;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.app.ActivityManager;
-import android.app.Application;
-import android.content.ComponentName;
-import android.content.Context;
 import android.os.Build;
 import android.os.Debug;
-import android.util.ArrayMap;
-import android.util.Log;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
-import live.itrip.agent.Main;
+import live.itrip.agent.Dumpsys;
+import live.itrip.agent.ExecCommands;
 
 /**
- * Created by Feng on 2017/9/18.
+ * Created on 2017/9/18.
+ * @author JianF
  */
 
 public class ProcessUtils {
+
+    /**
+     * set process name
+     *
+     * @param text
+     */
+    public static void setArgV0(String text) {
+        try {
+            Method setter = android.os.Process.class.getMethod("setArgV0", String.class);
+            setter.invoke(android.os.Process.class, text);
+        } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
+            e.printStackTrace();
+        }
+    }
+
+
     /**
      * 根据包名获取pid
      *
@@ -90,7 +104,7 @@ public class ProcessUtils {
 //                e1.printStackTrace();
 //            }
 //        } else
-            {
+        {
             for (ActivityManager.RunningAppProcessInfo runningProcess : getRunningAppProcessInfo(activityManager)) {
                 if ((runningProcess.processName != null) && runningProcess.processName.equals(packageName)) {
                     return runningProcess.uid;
@@ -118,7 +132,7 @@ public class ProcessUtils {
                 }
             }
         } catch (Exception e) {
-            Log.e(Main.LOGTAG, e.getMessage(), e);
+            LogUtils.e(e.getMessage(), e);
         }
         return processInfoList;
     }
@@ -133,48 +147,41 @@ public class ProcessUtils {
                 }
             }
         } catch (Exception e) {
-            Log.e(Main.LOGTAG, e.getMessage(), e);
+            LogUtils.e(e.getMessage(), e);
         }
         return memoryInfos;
     }
 
+    public static JSONObject getTopActivityInfo() throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+//        String command = String.format("dumpsys activity activities | grep mFocusedActivity", Dumpsys.activity);
+        String command = String.format("dumpsys %s activities", Dumpsys.activity);
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    public static Activity getRunningActivity() {
-        try {
+        List<String> list = ExecCommands.execCommands2List(command, "mFocusedActivity");
+        if (list.size() > 0) {
+            String str = list.get(0).trim();
+            String[] strings = str.split(" ");
 
-            Class activityThreadClass = Class.forName("android.app.ActivityThread");
-            Object activityThread = activityThreadClass.getMethod("currentActivityThread").invoke(null);
-            Field activitiesField = activityThreadClass.getDeclaredField("mActivities");
-            activitiesField.setAccessible(true);
-            ArrayMap activities = (ArrayMap) activitiesField.get(activityThread);
-            for (Object activityRecord : activities.values()) {
-                Class activityRecordClass = activityRecord.getClass();
-                Field pausedField = activityRecordClass.getDeclaredField("paused");
-                pausedField.setAccessible(true);
-                if (!pausedField.getBoolean(activityRecord)) {
-                    Field activityField = activityRecordClass.getDeclaredField("activity");
-                    activityField.setAccessible(true);
-                    return (Activity) activityField.get(activityRecord);
-                }
+            if (strings.length >= 4) {
+                String tmp = strings[3];
+                String[] ts = tmp.split("\\/");
+                jsonObject.put("packageName", ts[0]);
+                jsonObject.put("topActivityName", ts[0] + ts[1]);
             }
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
-
-        throw new RuntimeException("Didn't find the running activity");
+        return jsonObject;
     }
 
-    public static Application getApplicationUsingReflection() throws Exception {
-        Application app = (Application) Class.forName("android.app.ActivityThread")
-                .getMethod("currentApplication").invoke(null, (Object[]) null);
-        Log.d(Main.LOGTAG, "Application >>>>>>>>>>>>>> " + null);
 
-        return app;
-    }
-
-    public static Application getApplicationUsingReflectionByAppGlobals() throws Exception {
-        return (Application) Class.forName("android.app.AppGlobals")
-                .getMethod("getInitialApplication").invoke(null, (Object[]) null);
-    }
+//    public static void main(String[] args){
+//        String[] strings = "mFocusedActivity: ActivityRecord{3b70017 u0 live.itrip.app/.ui.activity.MainActivity t3796}".split(" ");
+//
+//        if (strings.length >= 4) {
+//            String tmp = strings[3];
+//            String[] ts = tmp.split("\\/");
+//            System.err.println(ts[0]);
+//            System.err.println(ts[0] + ts[1]);
+//
+//        }
+//    }
 }

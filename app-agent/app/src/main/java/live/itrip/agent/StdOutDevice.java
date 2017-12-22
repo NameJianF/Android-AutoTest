@@ -16,11 +16,11 @@ import java.nio.ByteOrder;
 import live.itrip.agent.virtualdisplay.EncoderDevice;
 
 public class StdOutDevice extends EncoderDevice {
-    int bitrate = 500000;
-    BufferedDataSink sink;
+    private int bitrate = 500000;
+    private BufferedDataSink sink;
 
     class Writer extends EncoderRunnable {
-        public Writer(MediaCodec venc) {
+        Writer(MediaCodec venc) {
             super(venc);
         }
 

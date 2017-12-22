@@ -4,7 +4,8 @@ import android.os.Handler;
 import android.view.Surface;
 
 /**
- * Created by Feng on 2017/9/8.
+ * Created on 2017/9/8.
+ * @author JianF
  */
 
 public interface VirtualDisplayFactory {

@@ -13,6 +13,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import live.itrip.agent.util.LogUtils;
+
 /**
  * Created by Feng on 2017/9/11.
  */
@@ -36,10 +38,15 @@ public class ExecCommands {
                 stringBuffer.append(line);
                 stringBuffer.append(separator);
             }
-            Log.v(Main.LOGTAG, "log:" + stringBuffer.toString());
-        } catch (Exception e) {
-            Log.e(Main.LOGTAG, "copy fail", e);
-        } finally {
+            LogUtils.v("log:" + stringBuffer.toString());
+        } catch (
+                Exception e)
+
+        {
+            LogUtils.e("copy fail", e);
+        } finally
+
+        {
             try {
                 if (dataOutputStream != null) {
                     dataOutputStream.close();
@@ -48,12 +55,12 @@ public class ExecCommands {
             } catch (Exception ignored) {
             }
         }
-        Log.v(Main.LOGTAG, "finish");
+        LogUtils.v("finish");
         return stringBuffer;
     }
 
 
-    public static List<String> execCommands2List(String commands) {
+    public static List<String> execCommands2List(String commands, String strContain) {
         List<String> list = new ArrayList<>(20);
         Process process = null;
         DataOutputStream dataOutputStream = null;
@@ -67,10 +74,16 @@ public class ExecCommands {
             String line = "";
 //            String separator = System.getProperty("line.separator");
             while ((line = reader.readLine()) != null) {
-                list.add(line);
+                if (strContain != null && strContain.length() > 0) {
+                    if (line.contains(strContain)) {
+                        list.add(line);
+                    }
+                } else {
+                    list.add(line);
+                }
             }
         } catch (Exception e) {
-            Log.e(Main.LOGTAG, "copy fail", e);
+            LogUtils.e("copy fail", e);
         } finally {
             try {
                 if (dataOutputStream != null) {
@@ -80,7 +93,7 @@ public class ExecCommands {
             } catch (Exception ignored) {
             }
         }
-        Log.v(Main.LOGTAG, "finish");
+//        Log.v(Main.LOGTAG, "finish");
         return list;
     }
 }

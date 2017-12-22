@@ -45,14 +45,13 @@ public class FPSSampler implements Choreographer.FrameCallback {
         if(bShouldStop){
             return;
         }
-        long currentTimeMillis = frameTimeNanos;
         if(mFirstFrameTime == -1){
-            mFirstFrameTime = currentTimeMillis;
+            mFirstFrameTime = frameTimeNanos;
         }else{
             mNumFrameCallbacks++;
         }
 
-        mLastFrameTime = currentTimeMillis;
+        mLastFrameTime = frameTimeNanos;
 
         //loop
         mChoreographer.postFrameCallback(this);

@@ -1,8 +1,6 @@
 package live.itrip.agent.callback;
 
 import android.app.ActivityManager;
-import android.util.Log;
-import android.view.IWindowManager;
 
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
@@ -16,32 +14,26 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Scanner;
 
-import live.itrip.agent.ExecCommands;
-import live.itrip.agent.Main;
+import live.itrip.agent.common.HttpErrorCode;
+import live.itrip.agent.util.InternalApi;
+import live.itrip.agent.util.LogUtils;
 
 /**
- * Created by Feng on 2017/9/7.
+ * Created on 2017/9/7.
+ * @author JianF
  */
 public class PerformanceRequestCallback implements HttpServerRequestCallback {
-    private IWindowManager iWindowManager;
-
-    public PerformanceRequestCallback(IWindowManager wm) {
-        this.iWindowManager = wm;
-    }
 
     @Override
     public void onRequest(AsyncHttpServerRequest request, AsyncHttpServerResponse response) {
         response.getHeaders().set("Cache-Control", "no-cache");
-        Log.i(Main.LOGTAG, "performance success");
+        LogUtils.i("performance success");
         try {
             response.setContentType("application/json;charset=utf-8");
-            Object activityManager = Main.activityManager;
-            String conent = "no datas";
+            Object activityManager = InternalApi.getActivityManager();
             JSONObject object = new JSONObject();
 
             for (Method method2 : activityManager.getClass().getDeclaredMethods()) {
@@ -126,11 +118,9 @@ public class PerformanceRequestCallback implements HttpServerRequestCallback {
 
             // dump notification
 //            object.put("dumpsysNotification", ExecCommands.execCommands("dumpsys notification").toString());
-
-            conent = object.toString();
-            response.send(conent);
+            response.send(object.toString());
         } catch (Exception e) {
-            response.code(500);
+            response.code(HttpErrorCode.ERROR_CODE_500);
             response.send(e.toString());
         }
     }
@@ -144,7 +134,7 @@ public class PerformanceRequestCallback implements HttpServerRequestCallback {
         try {
             File dir = new File("/data/tombstones/");
             if (dir.exists() && dir.listFiles() != null && dir.listFiles().length > 0) {
-                Log.e(Main.LOGTAG, String.valueOf(dir.listFiles().length));
+                LogUtils.e(String.valueOf(dir.listFiles().length));
                 for (File f : dir.listFiles()) {
                     JSONObject object = new JSONObject();
                     StringBuilder content = new StringBuilder();

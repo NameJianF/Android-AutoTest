@@ -30,13 +30,14 @@ public class NetWorkSampler {
         JSONObject netflow = new JSONObject();
 
         int uid = ProcessUtils.getUidByPackageName(activityManager, packageName);
-
         netflow.put("MobileRxBytes", TrafficStats.getMobileRxBytes());
         netflow.put("MobileTxBytes", TrafficStats.getMobileTxBytes());
         netflow.put("TotalRxBytes", TrafficStats.getTotalRxBytes());
         netflow.put("TotalTxBytes", TrafficStats.getTotalTxBytes());
-        netflow.put("UidRxBytes", TrafficStats.getUidRxBytes(uid));
-        netflow.put("UidTxBytes", TrafficStats.getUidTxBytes(uid));
+        if (uid > 0) {
+            netflow.put("UidRxBytes", TrafficStats.getUidRxBytes(uid));
+            netflow.put("UidTxBytes", TrafficStats.getUidTxBytes(uid));
+        }
         return netflow;
     }
 }

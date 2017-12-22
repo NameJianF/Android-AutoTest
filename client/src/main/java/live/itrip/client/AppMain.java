@@ -9,7 +9,7 @@ import live.itrip.client.common.App;
 import live.itrip.client.common.Config;
 import live.itrip.client.device.DeviceManager;
 import live.itrip.client.util.Logger;
-import live.itrip.client.util.PageUtil;
+import live.itrip.client.util.PageUtils;
 
 import java.io.InputStream;
 import java.net.URL;
@@ -25,6 +25,7 @@ public class AppMain extends Application {
      */
     static {
         Logger.debug(" >>>>>> Application LoadConfig Start ... <<<<<< ");
+        Logger.debug(" >>>>>> Application Path: " + System.getProperty("user.dir"));
         loadConfig();
         Logger.debug(" >>>>>> Application LoadConfig End ... <<<<<< ");
     }
@@ -36,9 +37,9 @@ public class AppMain extends Application {
         URL url = getClass().getResource("/ui/main.fxml");
         Parent root = FXMLLoader.load(url);
         primaryStage.setTitle("自动化测试-Client");
-        primaryStage.setScene(new Scene(root, 1000, 600));
-//        primaryStage.setFullScreen(true);
-        primaryStage.getIcons().add(PageUtil.getLogo());
+        primaryStage.setScene(new Scene(root));
+        primaryStage.setFullScreen(false);
+        primaryStage.getIcons().add(PageUtils.getLogo());
         primaryStage.show();
 
         DeviceManager.getInstance().start();

@@ -5,24 +5,86 @@ import com.android.ddmlib.ShellCommandUnresponsiveException;
 import live.itrip.client.bean.Message;
 
 /**
- * Created by Feng on 2017/6/13.
+ * Created on 2017/6/13.
+ *
+ * @author JianF
  */
 public interface IDeviceShell {
 
-    Message installAgent(String pkg, boolean reinstall);
+    /**
+     * install agent
+     *
+     * @param agentPath agent path
+     * @param reinstall is reinstall
+     * @return Message
+     */
+    Message installAgent(String agentPath, boolean reinstall);
 
-    Message unInstallAgent(String pkg);
+    /**
+     * uninstall agent
+     *
+     * @param packageName agent package name
+     * @return Message
+     */
+    Message uninstallAgent(String packageName);
 
-    void startAgentMainClass(String command, IShellOutputReceiver rcvr);
+    /**
+     * install app
+     *
+     * @param appPath   app path
+     * @param reinstall is reinstall
+     * @return Message
+     */
+    Message installApk(String appPath, boolean reinstall);
 
+    /**
+     * uninstall app
+     *
+     * @param packageName package name
+     * @return Message
+     */
+    Message uninstallApk(String packageName);
+
+    /**
+     * start app activity
+     *
+     * @param packageName package name
+     * @param activity    activity name
+     * @return Message
+     */
+    Message startActivity(String packageName, String activity);
+
+    /**
+     * start agent main class
+     *
+     * @param command command
+     */
+    void startAgentMainClass(String command);
+
+    /**
+     * adb create forward tcp
+     *
+     * @param localPort  local port
+     * @param remotePort remote port
+     * @throws ShellCommandUnresponsiveException ShellCommandUnresponsiveException
+     */
     void createForward(int localPort, String remotePort) throws ShellCommandUnresponsiveException;
 
     /**
-     * exec adb shell commands
+     * execute adb shell command by device
      *
-     * @param command
-     * @param rcvr
-     * @return
+     * @param command  command
+     * @param receiver receiver
+     * @return Message
      */
-    Message executeShellCommand(String command, IShellOutputReceiver rcvr);
+    Message executeShellCommand(String command, IShellOutputReceiver receiver);
+
+    /**
+     * execute adb shell command by new process
+     *
+     * @param command command
+     * @return Message
+     */
+    StringBuffer executeCommandByProcess(String command);
+
 }

@@ -1,13 +1,10 @@
 package live.itrip.agent;
 
-import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.media.MediaCodec;
-import android.os.Build;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.IWindowManager;
 
 import java.lang.reflect.Method;
@@ -15,19 +12,24 @@ import java.nio.ByteBuffer;
 import java.util.concurrent.TimeUnit;
 
 import live.itrip.agent.renderscript.YuvConverter;
+import live.itrip.agent.util.InternalApi;
+import live.itrip.agent.util.LogUtils;
 import live.itrip.agent.virtualdisplay.SurfaceControlVirtualDisplayFactory;
 
 
 /**
- * Created by Feng on 2017/9/7.
+ * Created on 2017/9/7.
+ *
+ * @author JianF
  */
 
 public class EncoderFeeder {
-    int colorFormat;
-    int height;
-    int rotation;
-    MediaCodec mediaCodec;
-    int width;
+    private int colorFormat;
+    private int height;
+    private int rotation;
+    private MediaCodec mediaCodec;
+    private int width;
+    private boolean stopFeed = false;
 
     public EncoderFeeder(MediaCodec codec, int width, int height, int colorFormat) {
         this.mediaCodec = codec;
@@ -41,28 +43,26 @@ public class EncoderFeeder {
     }
 
     public void feed() {
+        this.stopFeed = false;
         new Thread(new Runnable() {
             public void run() {
                 try {
                     EncoderFeeder.this.feedMe();
                 } catch (Exception e) {
-                    Log.e(Main.LOGTAG, "Error", e);
+                    LogUtils.e("Error", e);
                 }
             }
         }).start();
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
+    public void setStopFeed() {
+        this.stopFeed = true;
+    }
+
     private void feedMe() throws Exception {
-        String surfaceClassName;
+        LogUtils.i("EncoderFeeder >>> feedMe");
         ByteBuffer[] incs = null;
-        if (Build.VERSION.SDK_INT <= 17) {
-            surfaceClassName = "android.view.Surface";
-        } else {
-            surfaceClassName = "android.view.SurfaceControl";
-        }
-        Class cls = Class.forName(surfaceClassName);
-        Method screenshot = cls.getDeclaredMethod("screenshot", new Class[]{Integer.TYPE, Integer.TYPE});
+        Method screenshot = InternalApi.getMethodScreenshot();
         YuvConverter y = YuvConverter.createYPlaneConverter();
         YuvConverter uv = null;
         YuvConverter u = null;
@@ -73,7 +73,7 @@ public class EncoderFeeder {
             u = YuvConverter.createUConverter();
             v = YuvConverter.createVConverter();
         }
-        while (true) {
+        while (!stopFeed) {
             int buffer = this.mediaCodec.dequeueInputBuffer(-1);
             if (buffer >= 0) {
                 if (incs == null) {
@@ -81,7 +81,7 @@ public class EncoderFeeder {
                 }
                 ByteBuffer inc = incs[buffer];
                 inc.clear();
-                Bitmap b = (Bitmap) screenshot.invoke(null, new Object[]{Integer.valueOf(this.width), Integer.valueOf(this.height)});
+                Bitmap b = (Bitmap) screenshot.invoke(null, new Object[]{this.width, this.height});
                 if (this.rotation != 0) {
                     Matrix m = new Matrix();
                     if (this.rotation == 1) {
@@ -93,17 +93,19 @@ public class EncoderFeeder {
                     }
                     b = Bitmap.createScaledBitmap(Bitmap.createBitmap(b, 0, 0, this.width, this.height, m, false), this.width, this.height, false);
                 }
-                Log.i(Main.LOGTAG, "Bitmap info " + b.getWidth() + " " + b.getHeight() + " " + b.getRowBytes());
+                LogUtils.i("Bitmap info " + b.getWidth() + " " + b.getHeight() + " " + b.getRowBytes());
                 Bitmap scaled = Bitmap.createScaledBitmap(b, this.width / 2, this.height / 2, false);
-                int size = 0 + y.convert(b, inc);
-                if (Build.VERSION.SDK_INT < 18 && this.mediaCodec.getName().toLowerCase().contains("qcom")) {
-                    int padding = size % 2048;
-                    if (padding != 0) {
-                        padding = 2048 - padding;
-                        inc.position(inc.position() + padding);
-                        size += padding;
-                    }
-                }
+                int size = y.convert(b, inc);
+                /**
+                 if (Build.VERSION.SDK_INT < 18 && this.mediaCodec.getName().toLowerCase().contains("qcom")) {
+                 int padding = size % 2048;
+                 if (padding != 0) {
+                 padding = 2048 - padding;
+                 inc.position(inc.position() + padding);
+                 size += padding;
+                 }
+                 }
+                 **/
                 if (uv != null) {
                     size += uv.convert(scaled, inc);
                 } else {
@@ -130,16 +132,10 @@ public class EncoderFeeder {
         }
     }
 
-
     public static Bitmap screenshot(IWindowManager wm) throws Exception {
-        String surfaceClassName;
         Point size = SurfaceControlVirtualDisplayFactory.getCurrentDisplaySize(false);
-        if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.JELLY_BEAN_MR1) {
-            surfaceClassName = "android.view.Surface";
-        } else {
-            surfaceClassName = "android.view.SurfaceControl";
-        }
-        Bitmap b = (Bitmap) Class.forName(surfaceClassName).getDeclaredMethod("screenshot", new Class[]{Integer.TYPE, Integer.TYPE}).invoke(null, new Object[]{Integer.valueOf(size.x), Integer.valueOf(size.y)});
+        Bitmap b = (Bitmap) InternalApi.getMethodScreenshot()
+                .invoke(null, new Object[]{size.x, size.y});
         int rotation = wm.getRotation();
         if (rotation == 0) {
             return b;

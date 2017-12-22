@@ -1,8 +1,8 @@
 package live.itrip.agent.callback;
 
+import android.graphics.Point;
 import android.os.Build;
 import android.util.Log;
-import android.view.IWindowManager;
 
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
@@ -16,25 +16,26 @@ import java.util.Properties;
 import java.util.Scanner;
 
 import live.itrip.agent.Main;
+import live.itrip.agent.common.HttpErrorCode;
+import live.itrip.agent.util.LogUtils;
+import live.itrip.agent.virtualdisplay.SurfaceControlVirtualDisplayFactory;
 
 /**
- * Created by Feng on 2017/9/7.
+ * Created on 2017/9/7.
+ *
+ * @author JianF
  */
 public class DeviceInfoRequestCallback implements HttpServerRequestCallback {
-    private IWindowManager iWindowManager;
 
-    public DeviceInfoRequestCallback(IWindowManager wm) {
-        this.iWindowManager = wm;
+    public DeviceInfoRequestCallback() {
     }
 
     @Override
     public void onRequest(AsyncHttpServerRequest request, AsyncHttpServerResponse response) {
         response.getHeaders().set("Cache-Control", "no-cache");
-        Log.i(Main.LOGTAG, "performance success");
+        LogUtils.i("performance success");
         try {
             response.setContentType("application/json;charset=utf-8");
-            Object activityManager = Class.forName("android.app.ActivityManagerNative").getDeclaredMethod("getDefault", new Class[0]).invoke(null, new Object[0]);
-            String conent = "no datas";
             JSONObject object = new JSONObject();
 
             /*
@@ -55,7 +56,7 @@ public class DeviceInfoRequestCallback implements HttpServerRequestCallback {
             build.put("TAGS", Build.TAGS);
             build.put("VERSION_CODES.BASE", Build.VERSION_CODES.BASE);
             build.put("MODEL", Build.MODEL);
-            build.put("VERSION.SDK", Build.VERSION.SDK);
+            build.put("VERSION.SDK", Build.VERSION.SDK_INT);
             build.put("VERSION.RELEASE", Build.VERSION.RELEASE);
             build.put("DEVICE", Build.DEVICE);
             build.put("DISPLAY", Build.DISPLAY);
@@ -69,32 +70,32 @@ public class DeviceInfoRequestCallback implements HttpServerRequestCallback {
 
             object.put("android.os.Build", build);
 
-
             // System Properties
             JSONObject objProperties = new JSONObject();
             Properties properties = System.getProperties();
             for (Map.Entry entry : properties.entrySet()) {
                 objProperties.put(entry.getKey().toString(), entry.getValue());
             }
-//            objProperties.put("os.version", System.getProperty("os.version"));
-//            objProperties.put("os.name", System.getProperty("os.name"));
-//            objProperties.put("os.arch", System.getProperty("os.arch"));
-//            objProperties.put("user.home", System.getProperty("user.home"));
-//            objProperties.put("user.name", System.getProperty("user.name"));
-//            objProperties.put("user.dir", System.getProperty("user.dir"));
 
             object.put("systemProperties", objProperties);
 
             // cpuinfo
             object.put("cpuinfo", getCpuInfo());
             // stat
-//            object.put("stat", getStatInfo());
+            object.put("stat", getStatInfo());
 
+            // display size
+            Point displaySize = SurfaceControlVirtualDisplayFactory.getCurrentDisplaySize();
+            JSONObject jsonDisplay = new JSONObject();
+            jsonDisplay.put("type", "displaySize");
+            jsonDisplay.put("screenWidth", displaySize.x);
+            jsonDisplay.put("screenHeight", displaySize.y);
+            jsonDisplay.put("nav", Main.hasNavBar());
+            object.put("display", jsonDisplay);
 
-            conent = object.toString();
-            response.send(conent);
+            response.send(object.toString());
         } catch (Exception e) {
-            response.code(500);
+            response.code(HttpErrorCode.ERROR_CODE_500);
             response.send(e.toString());
         }
     }

@@ -1,16 +1,19 @@
 package live.itrip.agent.handler.cpu;
 
-import android.util.Log;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import live.itrip.agent.Main;
+import live.itrip.agent.util.LogUtils;
 
 /**
- * Created by Feng on 2017/9/15.
+ * Created on 2017/9/15.
+ *
+ * @author JianF
  */
 
 public class CpuSampler {
@@ -39,7 +42,7 @@ public class CpuSampler {
     }
 
 
-    public StringBuilder getCpuRateInfo(int mPid) {
+    public JSONObject getCpuRateInfo(int mPid) {
         BufferedReader cpuReader = null;
         BufferedReader pidReader = null;
 
@@ -50,18 +53,23 @@ public class CpuSampler {
                 cpuRate = "";
             }
 
+            // TODO
             if (mPid == 0) {
                 mPid = android.os.Process.myPid();
             }
-            pidReader = new BufferedReader(new InputStreamReader(new FileInputStream("/proc/" + mPid + "/stat")), BUFFER_SIZE);
-            String pidCpuRate = pidReader.readLine();
-            if (pidCpuRate == null) {
+            String pidCpuRate = "";
+            if (mPid > 0) {
+                pidReader = new BufferedReader(new InputStreamReader(new FileInputStream("/proc/" + mPid + "/stat")), BUFFER_SIZE);
+                pidCpuRate = pidReader.readLine();
+                if (pidCpuRate == null) {
+                    pidCpuRate = "";
+                }
+            } else {
                 pidCpuRate = "";
             }
-
             return parse(cpuRate, pidCpuRate);
         } catch (Throwable throwable) {
-            Log.e(Main.LOGTAG, "getCpuRateInfo: ", throwable);
+            LogUtils.e("getCpuRateInfo: ", throwable);
         } finally {
             try {
                 if (cpuReader != null) {
@@ -71,10 +79,10 @@ public class CpuSampler {
                     pidReader.close();
                 }
             } catch (IOException exception) {
-                Log.e(Main.LOGTAG, "getCpuRateInfo: ", exception);
+                LogUtils.e("getCpuRateInfo: ", exception);
             }
         }
-        return new StringBuilder();
+        return null;
     }
 
     private void reset() {
@@ -86,12 +94,12 @@ public class CpuSampler {
         mAppCpuTimeLast = 0;
     }
 
-    private StringBuilder parse(String cpuRate, String pidCpuRate) {
-        StringBuilder stringBuilder = new StringBuilder();
+    private JSONObject parse(String cpuRate, String pidCpuRate) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
 
         String[] cpuInfoArray = cpuRate.split(" ");
         if (cpuInfoArray.length < 9) {
-            return stringBuilder;
+            return jsonObject;
         }
 
         long user = Long.parseLong(cpuInfoArray[2]);
@@ -105,7 +113,7 @@ public class CpuSampler {
 
         String[] pidCpuInfoList = pidCpuRate.split(" ");
         if (pidCpuInfoList.length < 17) {
-            return stringBuilder;
+            return jsonObject;
         }
 
         long appCpuTime = Long.parseLong(pidCpuInfoList[13])
@@ -117,20 +125,17 @@ public class CpuSampler {
             long idleTime = idle - mIdleLast;
             long totalTime = total - mTotalLast;
 
-            stringBuilder
-                    .append("cpu:")
-                    .append((totalTime - idleTime) * 100L / totalTime)
-                    .append("% ")
-                    .append("app:")
-                    .append((appCpuTime - mAppCpuTimeLast) * 100L / totalTime)
-                    .append("% ")
-                    .append("[")
-                    .append("user:").append((user - mUserLast) * 100L / totalTime)
-                    .append("% ")
-                    .append("system:").append((system - mSystemLast) * 100L / totalTime)
-                    .append("% ")
-                    .append("ioWait:").append((ioWait - mIoWaitLast) * 100L / totalTime)
-                    .append("% ]");
+            // cpu:36% app:-22907% [user:14% system:18% ioWait:0% ]
+
+            jsonObject.put("cpu", (totalTime - idleTime) * 100L / totalTime);
+            jsonObject.put("app", (appCpuTime - mAppCpuTimeLast) * 100L / totalTime);
+            long tmp = (user - mUserLast) * 100L / totalTime;
+            if (tmp > 100 || tmp < 0) {
+                tmp = 0;
+            }
+            jsonObject.put("user", tmp);
+            jsonObject.put("system", (system - mSystemLast) * 100L / totalTime);
+            jsonObject.put("ioWait", (ioWait - mIoWaitLast) * 100L / totalTime);
         }
         mUserLast = user;
         mSystemLast = system;
@@ -139,6 +144,6 @@ public class CpuSampler {
         mTotalLast = total;
         mAppCpuTimeLast = appCpuTime;
 
-        return stringBuilder;
+        return jsonObject;
     }
 }

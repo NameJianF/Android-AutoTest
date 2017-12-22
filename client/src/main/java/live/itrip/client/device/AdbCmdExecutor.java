@@ -1,22 +1,24 @@
 package live.itrip.client.device;
 
 import com.android.ddmlib.IShellOutputReceiver;
-import com.android.ddmlib.MultiLineReceiver;
 import com.android.ddmlib.ShellCommandUnresponsiveException;
+import live.itrip.client.device.receiver.DefaultShellOutputReceiver;
 import live.itrip.client.util.Logger;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.File;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by Feng on 2017/6/13.
+ * Created on 2017/6/13.
+ *
+ * @author JianF
  */
 public class AdbCmdExecutor {
+    private static final String REGEX = "([\\\"'](\\S+)[\\\"']|[\\\"']([^\\\"^']+)[\\\"']|\\S+)(\\s+|$)";
+
     /**
      * 执行外部指令并返回输出结果
      *
@@ -36,7 +38,7 @@ public class AdbCmdExecutor {
     private static void executeCommand(String workDir, String command,
                                        IShellOutputReceiver rcvr, int maxTimeToOutputResponse)
             throws ShellCommandUnresponsiveException, IOException {
-        final int WAIT_TIME = 5;// spin-wait sleep, in ms
+        final int waitTime = 5;// spin-wait sleep, in ms
         Process proc = null;
         InputStream input = null;// BufferedReader
         try {
@@ -67,14 +69,14 @@ public class AdbCmdExecutor {
                             + " on device : EOF hit. Read: " + count);
                 } else if (count == 0) {
                     try {
-                        int wait = WAIT_TIME * 5;
+                        int wait = waitTime * 5;
                         timeToResponseCount += wait;
-                        if (maxTimeToOutputResponse > 0
-                                && timeToResponseCount > maxTimeToOutputResponse) {
+                        if (maxTimeToOutputResponse > 0 && timeToResponseCount > maxTimeToOutputResponse) {
                             throw new ShellCommandUnresponsiveException();
                         }
                         Thread.sleep(wait);
                     } catch (InterruptedException ie) {
+                        ie.printStackTrace();
                     }
                 } else {
                     // reset timeout
@@ -86,9 +88,7 @@ public class AdbCmdExecutor {
                 }
                 // 内容写出完毕后检查进程是否结束
                 try {
-
                     proc.exitValue();
-
                     //Zipalign 执行在进程退出后才会输出相应的日志，所以增加相应的处理
                     count = 0;
                     if (input.available() > 0) {
@@ -117,56 +117,55 @@ public class AdbCmdExecutor {
         }
     }
 
+    public static StringBuffer executeCommandStartMain(String command) throws IOException {
+        StringBuffer stringBuffer = new StringBuffer();
+        try {
+            Process p = Runtime.getRuntime().exec(command);
+            p.waitFor();
+            BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                stringBuffer.append(line).append("\n");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return stringBuffer;
+    }
+
+    public static StringBuffer executeCommandByProcess(String command) {
+        StringBuffer stringBuffer = new StringBuffer();
+        try {
+            Process process = Runtime.getRuntime().exec(command);
+            // 读取进程标准输出流
+            BufferedReader in = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null) {
+                stringBuffer.append(line).append("\n");
+            }
+            // 关闭输入流
+            in.close();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return stringBuffer;
+    }
+
+
     private static List<String> parseCmds(String cmd) {
-        Pattern p = Pattern.compile("([\\\"'](\\S+)[\\\"']|[\\\"']([^\\\"^']+)[\\\"']|\\S+)(\\s+|$)");
+        Pattern p = Pattern.compile(REGEX);
         Matcher m = p.matcher(cmd);
         List<String> ss = new ArrayList<String>();
         while (m.find()) {
-            if (null != m.group(3))
+            if (null != m.group(3)) {
                 ss.add(m.group(3));
-            else if (null != m.group(2))
+            } else if (null != m.group(2)) {
                 ss.add(m.group(2));
-            else
+            } else {
                 ss.add(m.group(1));
+            }
         }
         return ss;
     }
 
-    public static final class DefaultShellOutputReceiver extends
-            MultiLineReceiver {
-        private static final String EOF = "\r\n";
-        private boolean isCancel = false;
-        private StringBuffer output = new StringBuffer();
-
-        @Override
-        public void processNewLines(String[] arg0) {
-            for (String line : arg0) {
-                if (line.length() > 0) {
-                    output.append(line + EOF);
-                }
-            }
-        }
-
-        /***
-         * 获取所有输出结果
-         *
-         * @return
-         */
-        public String getOutput() {
-            return output.toString();
-        }
-
-        /**
-         * 取消执行
-         */
-        public void cancel() {
-            isCancel = true;
-        }
-
-        @Override
-        public boolean isCancelled() {
-            return isCancel;
-        }
-
-    }
 }

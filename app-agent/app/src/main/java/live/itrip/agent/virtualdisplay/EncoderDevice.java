@@ -1,6 +1,5 @@
 package live.itrip.agent.virtualdisplay;
 
-import android.annotation.TargetApi;
 import android.graphics.Point;
 import android.media.MediaCodec;
 import android.media.MediaCodecInfo;
@@ -8,7 +7,6 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaCodecInfo.CodecProfileLevel;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
-import android.os.Build;
 import android.os.Build.VERSION;
 import android.sax.Element;
 import android.sax.ElementListener;
@@ -26,21 +24,21 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import live.itrip.agent.util.LogUtils;
 import live.itrip.agent.util.Parsers;
 
 public abstract class EncoderDevice {
-    static final boolean assertionsDisabled = (!EncoderDevice.class.desiredAssertionStatus());
+    private static final boolean assertionsDisabled = (!EncoderDevice.class.desiredAssertionStatus());
     public final String LOGTAG = getClass().getSimpleName();
-    int colorFormat;
-    Point encSize;
-    int height;
-    Thread lastEncoderThread;
+    private int colorFormat;
+    private Point encSize;
+    private int height;
     public String name;
-    boolean useSurface = true;
-    public VirtualDisplayFactory vdf;
+    private boolean useSurface = true;
+    private VirtualDisplayFactory vdf;
     public MediaCodec encoder;
-    public VirtualDisplay virtualDisplay;
-    int width;
+    private VirtualDisplay virtualDisplay;
+    private int width;
 
     protected abstract class EncoderRunnable implements Runnable {
         MediaCodec venc;
@@ -91,9 +89,7 @@ public abstract class EncoderDevice {
     }
 
     public void stop() {
-        if (VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            signalEnd();
-        }
+        signalEnd();
         this.encoder = null;
         if (this.virtualDisplay != null) {
             this.virtualDisplay.release();
@@ -105,12 +101,13 @@ public abstract class EncoderDevice {
         }
     }
 
-    void destroyDisplaySurface(MediaCodec venc) {
+    private void destroyDisplaySurface(MediaCodec venc) {
         if (venc != null) {
             try {
                 venc.stop();
                 venc.release();
             } catch (Exception e) {
+                LogUtils.e(e.getMessage(), e);
             }
             if (this.encoder == venc) {
                 this.encoder = null;
@@ -126,17 +123,17 @@ public abstract class EncoderDevice {
         }
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR2)
-    void signalEnd() {
+    private void signalEnd() {
         if (this.encoder != null) {
             try {
                 this.encoder.signalEndOfInputStream();
             } catch (Exception e) {
+                LogUtils.e(e.getMessage(), e);
             }
         }
     }
 
-    void setSurfaceFormat(MediaFormat video) {
+    private void setSurfaceFormat(MediaFormat video) {
         this.colorFormat = 2130708361;
         video.setInteger(MediaFormat.KEY_COLOR_FORMAT, 2130708361);
     }
@@ -189,9 +186,7 @@ public abstract class EncoderDevice {
 
 
     public Surface createDisplaySurface() {
-        if (VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            signalEnd();
-        }
+        signalEnd();
         this.encoder = null;
         MediaCodecInfo codecInfo = null;
         try {
@@ -217,6 +212,7 @@ public abstract class EncoderDevice {
                 }
             }
         } catch (Exception e) {
+            LogUtils.e(e.getMessage(), e);
         }
         int maxWidth;
         int maxHeight;
@@ -226,7 +222,7 @@ public abstract class EncoderDevice {
             String xml = StreamUtility.readFile("/system/etc/media_profiles.xml");
             RootElement root = new RootElement("MediaSettings");
             Element encoderElement = root.requireChild("VideoEncoderCap");
-            ArrayList<VideoEncoderCap> encoders = new ArrayList();
+            ArrayList<VideoEncoderCap> encoders = new ArrayList<>();
             XmlListener mXmlListener = new XmlListener(encoders);
             encoderElement.setElementListener(mXmlListener);
             Reader mReader = new StringReader(xml);
@@ -237,6 +233,11 @@ public abstract class EncoderDevice {
             }
 
             VideoEncoderCap videoEncoderCap = encoders.get(0);
+            for (VideoEncoderCap cap : encoders) {
+                if ("h264".equals(cap.name)) {
+                    videoEncoderCap = cap;
+                }
+            }
             maxWidth = videoEncoderCap.maxFrameWidth;
             maxHeight = videoEncoderCap.maxFrameHeight;
             bitrate = videoEncoderCap.maxBitRate;
@@ -267,10 +268,10 @@ public abstract class EncoderDevice {
                     this.height = (int) (((double) this.height) * ratio);
                 }
             }
-            this.width /= 16;
-            this.width *= 16;
-            this.height /= 16;
-            this.height *= 16;
+//            this.width /= 16;
+//            this.width *= 16;
+//            this.height /= 16;
+//            this.height *= 16;
             Log.i(this.LOGTAG, "Width: " + this.width + " Height: " + this.height);
             this.encSize = new Point(this.width, this.height);
             MediaFormat mMediaFormat = MediaFormat.createVideoFormat("video/avc", this.width, this.height);
@@ -295,14 +296,14 @@ public abstract class EncoderDevice {
                 this.encoder.configure(mMediaFormat, null, null, MediaCodec.CONFIGURE_FLAG_ENCODE);
                 Log.i(this.LOGTAG, "Creating input surface");
                 Surface surface = null;
-                if (VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2 && this.useSurface) {
+                if (this.useSurface) {
                     surface = this.encoder.createInputSurface();
                 }
                 Log.i(this.LOGTAG, "Starting Encoder");
                 this.encoder.start();
                 Log.i(this.LOGTAG, "Surface ready");
-                this.lastEncoderThread = new Thread(onSurfaceCreated(this.encoder), "Encoder");
-                this.lastEncoderThread.start();
+                Thread lastEncoderThread = new Thread(onSurfaceCreated(this.encoder), "Encoder");
+                lastEncoderThread.start();
                 Log.i(this.LOGTAG, "Encoder ready");
                 return surface;
             } catch (Exception e2) {
@@ -317,7 +318,7 @@ public abstract class EncoderDevice {
     private class XmlListener implements ElementListener {
         final ArrayList<VideoEncoderCap> encoders;
 
-        XmlListener(ArrayList mList) {
+        XmlListener(ArrayList<VideoEncoderCap> mList) {
             this.encoders = mList;
         }
 
@@ -340,16 +341,20 @@ public abstract class EncoderDevice {
 //        minFrameHeight="144" maxFrameHeight="1080"
 //        minFrameRate="15" maxFrameRate="30" />
 
+        String name;
+        boolean enabled;
         int maxBitRate;
         int maxFrameHeight;
         int maxFrameRate;
         int maxFrameWidth;
 
-        public VideoEncoderCap(Attributes attributes) {
-            this.maxFrameWidth = Integer.valueOf(attributes.getValue("maxFrameWidth")).intValue();
-            this.maxFrameHeight = Integer.valueOf(attributes.getValue("maxFrameHeight")).intValue();
-            this.maxBitRate = Integer.valueOf(attributes.getValue("maxBitRate")).intValue();
-            this.maxFrameRate = Integer.valueOf(attributes.getValue("maxFrameRate")).intValue();
+        VideoEncoderCap(Attributes attributes) {
+            this.maxFrameWidth = Integer.valueOf(attributes.getValue("maxFrameWidth"));
+            this.maxFrameHeight = Integer.valueOf(attributes.getValue("maxFrameHeight"));
+            this.maxBitRate = Integer.valueOf(attributes.getValue("maxBitRate"));
+            this.maxFrameRate = Integer.valueOf(attributes.getValue("maxFrameRate"));
+            this.name = attributes.getValue("name");
+            this.enabled = Boolean.valueOf(attributes.getValue("enabled"));
         }
     }
 }

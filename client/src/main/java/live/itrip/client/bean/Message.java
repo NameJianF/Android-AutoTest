@@ -1,7 +1,9 @@
 package live.itrip.client.bean;
 
 /**
- * Created by Feng on 2017/6/13.
+ * Created on 2017/6/13.
+ *
+ * @author JianF
  */
 public class Message {
     private Integer code;

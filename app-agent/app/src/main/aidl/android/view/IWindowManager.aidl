@@ -16,5 +16,9 @@ interface IWindowManager {
 
        int getRotation();
 
-       int watchRotation(IRotationWatcher watcher, int displayId);
+        /**
+            * Watch the rotation of the specified screen.  Returns the current rotation,
+            * calls back when it changes.
+            */
+           int watchRotation(IRotationWatcher watcher, int displayId);
 }

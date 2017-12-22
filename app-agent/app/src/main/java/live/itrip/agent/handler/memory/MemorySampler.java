@@ -2,7 +2,6 @@ package live.itrip.agent.handler.memory;
 
 import android.app.ActivityManager;
 import android.os.Debug;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -10,11 +9,13 @@ import org.json.JSONObject;
 import java.lang.reflect.Method;
 import java.util.List;
 
-import live.itrip.agent.Main;
+import live.itrip.agent.util.LogUtils;
 import live.itrip.agent.util.ProcessUtils;
 
 /**
- * Created by Feng on 2017/9/20.
+ * Created on 2017/9/20.
+ *
+ * @author JianF
  */
 
 public class MemorySampler {
@@ -45,7 +46,7 @@ public class MemorySampler {
                 }
             }
         } catch (Exception e) {
-            Log.e(Main.LOGTAG, e.getMessage(), e);
+            LogUtils.e(e.getMessage(), e);
         }
         return objMem;
     }
@@ -75,13 +76,14 @@ public class MemorySampler {
                 // 此MemoryInfo位于android.os.Debug.MemoryInfo包中，用来统计进程的内存信息
                 Debug.MemoryInfo[] memoryInfos = ProcessUtils.getProcessMemoryInfo(activityManager, myMempid);// activityManager.getProcessMemoryInfo(myMempid);
                 if (memoryInfos != null) {
+                    objMem.put("memPids", memoryInfos.length);
                     // 获取进程占内存用信息 kb单位
                     for (int i = 0; i < memoryInfos.length; i++) {
                         Debug.MemoryInfo memoryInfo = memoryInfos[i];
                         objMem.put("dalvikPrivateDirty[" + i + "]", memoryInfo.dalvikPrivateDirty);
                     }
 
-                    Log.i(Main.LOGTAG, "processName: " + processName + "  pid: " + pid
+                   LogUtils.i("processName: " + processName + "  pid: " + pid
                             + " uid:" + uid + " memorySize is -->" + memoryInfos[0].dalvikPrivateDirty + "kb");
                     break;
                 }
@@ -89,9 +91,9 @@ public class MemorySampler {
 
                 // 获得每个进程里运行的应用程序(包),即每个应用程序的包名
 //                String[] packageList = appProcessInfo.pkgList;
-//                Log.i(Main.LOGTAG, "process id is " + pid + "has " + packageList.length);
+//               LogUtils.i("process id is " + pid + "has " + packageList.length);
 //                for (String pkg : packageList) {
-//                    Log.i(Main.LOGTAG, "packageName " + pkg + " in process id is -->" + pid);
+//                   LogUtils.i("packageName " + pkg + " in process id is -->" + pid);
 //                }
             }
         }

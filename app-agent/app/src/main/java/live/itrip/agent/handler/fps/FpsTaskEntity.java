@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.Choreographer;
 
 import live.itrip.agent.Main;
+import live.itrip.agent.util.LogUtils;
 import live.itrip.agent.util.ProcessUtils;
 
 /**
@@ -25,8 +26,8 @@ public class FpsTaskEntity {
         }
         Double fps = mFPSSampler.getFPS();
 
-        Log.d(Main.LOGTAG, " >>>>>>>>>>>>>> FPS is : " + fps);
-        Log.d(Main.LOGTAG, " >>>>>>>>>>>>>> current pid : " + ProcessUtils.getCurrentPid());
+        LogUtils.d(" >>>>>>>>>>>>>> FPS is : " + fps);
+        LogUtils.d(" >>>>>>>>>>>>>> current pid : " + ProcessUtils.getCurrentPid());
         mFPSSampler.reset();
         return fps;
     }

@@ -4,7 +4,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 
 /**
- * Created by Feng on 2017/5/26.
+ * Created on 2017/5/26.
+ *
+ * @author JianF
  */
 public class PageInfo {
     private Node node;

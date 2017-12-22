@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="GROUP_BY_SEVERITY" value="true" />
+  </component>
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="client" />
@@ -65,28 +68,85 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MainController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="117">
-              <caret line="255" column="15" lean-forward="true" selection-start-line="255" selection-start-column="15" selection-end-line="255" selection-end-column="15" />
+            <state relative-caret-position="272">
+              <caret line="214" column="9" lean-forward="true" selection-start-line="214" selection-start-column="9" selection-end-line="214" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#initDevice#0;class#MainController#0" expanded="false" />
-                <element signature="method#run#0;class#4234:5404" expanded="false" />
+                <element signature="docComment;class#MainController#0" expanded="false" />
+                <element signature="method#initialize#0;class#MainController#0" expanded="false" />
+                <element signature="method#initLineChart#0;class#MainController#0" expanded="false" />
+                <element signature="method#initTableView#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnConnectClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnSelectAppClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#showToWindow#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnScreenshotClick#0;class#MainController#0" expanded="false" />
                 <element signature="method#btnLiveClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnStopClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnBackClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnHomeClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnMenuClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnMonkeyClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnRobotiumClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnUiautomatorClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#btnAppiumClick#0;class#MainController#0" expanded="false" />
+                <element signature="method#writeClientLog#0;class#MainController#0" expanded="false" />
+                <element signature="method#getDeviceInfos#0;class#MainController#0" expanded="false" />
+                <element signature="method#handPerformanceDatas#0;class#MainController#0" expanded="false" />
+                <element signature="method#onAgentMainClassClosed#0;class#MainController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AppMain.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/AppMain.java">
+      <file leaf-file-name="MouseEventHandler.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/handler/MouseEventHandler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+            <state relative-caret-position="163">
+              <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DeviceInfo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/device/DeviceInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="243" column="60" lean-forward="true" selection-start-line="243" selection-start-column="60" selection-end-line="243" selection-end-column="60" />
               <folding>
-                <element signature="method#loadConfig#0;class#AppMain#0" expanded="false" />
+                <element signature="imports" expanded="true" />
+                <element signature="docComment;field#testing#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="docComment;method#initDevice#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="e#4966#6076#0" expanded="false" />
+                <element signature="method#performanceInfos#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="e#7626#7813#0" expanded="false" />
+                <element signature="method#installApk#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="method#uninstallApk#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="docComment;method#startActivity#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="method#startActivity#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="docComment;method#onAgentMainClassClosed#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="method#getDeviceLogcat#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="docComment;method#executeCommandStartMain#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="method#executeCommandStartMain#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="docComment;method#pushFile#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="method#executeMonkeyCommand#0;class#DeviceInfo#0" expanded="false" />
+                <element signature="method#setDeviceStatusListener#0;class#DeviceInfo#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputMethodClient.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputMethodClient.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="325">
+              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+              <folding>
+                <element signature="e#493#494#0" expanded="true" />
+                <element signature="e#525#526#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,6 +157,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
+        <option value="FxmlFile" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -104,17 +166,40 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>createForward</find>
-      <find>ListView</find>
-      <find>XYChart</find>
-      <find>public XYChart</find>
-      <find>this.yAxis</find>
-      <find>LineChart</find>
-      <find>alert</find>
-      <find>getResponse</find>
-      <find>InputWebsocketTask</find>
-      <find>ws</find>
+      <find>device</find>
+      <find>log</find>
+      <find>loc</find>
+      <find>ThreadPoolExecutor</find>
+      <find>newCachedThreadPool</find>
+      <find>clientLogListener</find>
+      <find>deviceStatusListener</find>
+      <find>performanceRuning</find>
+      <find>dialog</find>
+      <find>new Thread</find>
+      <find>mon</find>
+      <find>Stage</find>
+      <find>--</find>
+      <find>tabs</find>
+      <find>tabPane</find>
+      <find>btnAppium</find>
+      <find>FileChooser</find>
+      <find>Alert</find>
+      <find>analyzeApp</find>
+      <find>textFieldPctAnyEvent</find>
+      <find>androidShell</find>
+      <find>textFieldScriptFile</find>
+      <find>btnLiveClick</find>
+      <find>forw</find>
+      <find>startAppAgentService</find>
+      <find>threadLive</find>
+      <find>BufferedImage</find>
+      <find>screenLive</find>
+      <find>keyboardInputHandler</find>
+      <find>mouseEventHandler</find>
     </findStrings>
+    <replaceStrings>
+      <replace>HttpUtils</replace>
+    </replaceStrings>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -129,57 +214,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/common/Config.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/common/PageInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/Controller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/PageUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/socket/DeviceWebSocket.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/Message.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/shell/IShellOutputReceiver.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/PageInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/ui/PageInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/common/ErrorCode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/AdbCommandFormat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/AdbCmdExecutor.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/socket/WebSocketClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MyClientInitialize.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MyClientHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MyClientInitializer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/xsocket/WebSocketClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/xsocket/CommandInfo.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/xsocket/CommandExecResult.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/xsocket/ICommandCallback.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/xsocket/XSocketClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/xsocket/ClientHandler.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/koushikdutta/async/http/AsyncHttpClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/koushikdutta/async/http/AsyncHttpRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/SocketClient.java" />
-        <option value="$PROJECT_DIR$/libs/ddmlib-25.3.1.jar!/com/android/ddmlib/AndroidDebugBridge.class" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/DeviceManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/ApkInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/DatetimeFormatUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/ThreadExecutor2.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/ThreadExecutor3.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/IDeviceStatusListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/apk/ApkInfo.java" />
         <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/common/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/AdbCmdFormat.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/device/DeviceInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/handler/PerformanceDataHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/ThreadExecutor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/AaptCmdExecutor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/ITester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/common/ErrorCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/TestConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/TestTypeEnum.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/MonkeyTester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/BaseTester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/view/ChoiceDialogHelper.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/window/MonkeyConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/PageUtil.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/ui/PageInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/common/ModalReturnValue.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/ITester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/IClientLogListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/IAppAnalyzeListener.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/config/MonkeyConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/DirectoryService.java" />
+        <option value="$PROJECT_DIR$/test/net.oschina.app/monkey/log.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/FileUtils.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/BaseTester.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/TesterFactory.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/Message.java" />
         <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/IDeviceShell.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/DirectoryService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/AdbCmdExecutor.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/ui/window/monkey_config.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/window/MonkeyConfigController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/MonkeyTester.java" />
         <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/device/AndroidShell.java" />
         <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/FFmpegFXImageDecoder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/HttpUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/DeviceInfoService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/ui/main.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/MemoryService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/FfmpegFXImageDecoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/FfmpegImageDecoder.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/InputWebsocketClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/InputWebsocketService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/InputWebsocketTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputWebsocketTask.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/MemoryService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketClient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceService_bak.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketTask.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/ui/main.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/handler/KeyboardInputHandler.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/util/H264Decoder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/bean/device/DeviceInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputWebsocketClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputMotherClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputMethedClient.java" />
+        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputMethodClient.java" />
         <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/live/itrip/client/AppMain.java" />
       </list>
     </option>
   </component>
@@ -208,11 +293,35 @@
     </treeState>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-7" />
+    <option name="width" value="1380" />
+    <option name="height" value="735" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Java</id>
+          </State>
+          <State>
+            <id>Java 8Java language level migration aidsJava</id>
+          </State>
+          <State>
+            <id>Java language level migration aidsJava</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Convert2Lambda</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectReloadState">
     <option name="STATE" value="0" />
@@ -232,6 +341,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -269,14 +380,30 @@
               <item name="client" type="b2602c69:ProjectViewProjectNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="client" type="b2602c69:ProjectViewProjectNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="ui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -292,11 +419,11 @@
     <property name="dynamic.classpath" value="false" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2735632" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/tools/agent.apk" />
+    <property name="settings.editor.selected.configurable" value="preferences.JavaFX" />
+    <property name="last_opened_file_path" value="D:/Program Files (x86)/Oracle/JavaFX Scene Builder 2.0/JavaFX Scene Builder 2.0.exe" />
     <property name="settings.editor.splitter.proportion" value="0.2514677" />
   </component>
   <component name="RecentsManager">
@@ -795,47 +922,73 @@
       <workItem from="1505473493334" duration="1723000" />
       <workItem from="1505698061751" duration="1571000" />
       <workItem from="1505873532837" duration="1673000" />
+      <workItem from="1506050915440" duration="19661000" />
+      <workItem from="1506302257921" duration="40617000" />
+      <workItem from="1506646312346" duration="40052000" />
+      <workItem from="1507514415046" duration="1212000" />
+      <workItem from="1507608278299" duration="2253000" />
+      <workItem from="1508114489497" duration="6041000" />
+      <workItem from="1508292653514" duration="17828000" />
+      <workItem from="1508744883453" duration="767000" />
+      <workItem from="1508745744897" duration="763000" />
+      <workItem from="1508748534723" duration="8872000" />
+      <workItem from="1509693590501" duration="993000" />
+      <workItem from="1509695483040" duration="3972000" />
+      <workItem from="1509957074131" duration="5167000" />
+      <workItem from="1510107151374" duration="1545000" />
+      <workItem from="1510210877948" duration="10862000" />
+      <workItem from="1510279246243" duration="433000" />
+      <workItem from="1510280736788" duration="4882000" />
+      <workItem from="1510298782584" duration="5727000" />
+      <workItem from="1511163154880" duration="8484000" />
+      <workItem from="1511238107110" duration="1505000" />
+      <workItem from="1511245093928" duration="12422000" />
+      <workItem from="1511314559943" duration="30184000" />
+      <workItem from="1512616903988" duration="11299000" />
+      <workItem from="1512977698746" duration="1478000" />
+      <workItem from="1513143228370" duration="8178000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154911000" />
+    <option name="totallyTimeSpent" value="400108000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="0" width="1380" height="735" extended-state="0" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29885057" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2973913" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869565" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32894737" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18381241" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20361248" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32733223" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.20347826" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38434783" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16868381" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1689394" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16869566" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41215107" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5565217" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31691298" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
+      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32840723" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -856,16 +1009,22 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/AndroidShell.java</url>
-          <line>55</line>
+          <url>file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/MonkeyTester.java</url>
+          <line>171</line>
           <properties />
-          <option name="timeStamp" value="42" />
+          <option name="timeStamp" value="132" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MainController.java</url>
+          <line>435</line>
+          <properties />
+          <option name="timeStamp" value="135" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="44" />
+      <option name="time" value="139" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -874,400 +1033,425 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/Message.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/common/ErrorCode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        <state relative-caret-position="357">
+          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="45" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/common/ErrorCode.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/AaptCmdExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="20" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+        <state relative-caret-position="461">
+          <caret line="69" column="13" lean-forward="true" selection-start-line="69" selection-start-column="13" selection-end-line="69" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="183">
+          <caret line="234" column="18" lean-forward="false" selection-start-line="234" selection-start-column="18" selection-end-line="234" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/TestConfig.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/config/ITestConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_151/javafx-src.zip!/javafx/scene/control/ChoiceDialog.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="59" column="39" lean-forward="true" selection-start-line="59" selection-start-column="39" selection-end-line="59" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/view/ChoiceDialogHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="29" column="9" lean-forward="true" selection-start-line="29" selection-start-column="9" selection-end-line="29" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/ui/PageInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="12" column="36" lean-forward="false" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/AppMain.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="42" column="28" lean-forward="true" selection-start-line="42" selection-start-column="28" selection-end-line="42" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_151/javafx-src.zip!/javafx/fxml/Initializable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="52" column="7" lean-forward="true" selection-start-line="52" selection-start-column="7" selection-end-line="52" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/common/ModalReturnValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/TestTypeEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="31" column="11" lean-forward="true" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/ITester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="14" column="3" lean-forward="true" selection-start-line="14" selection-start-column="3" selection-end-line="14" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/IClientLogListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="16" lean-forward="true" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/IAppAnalyzeListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="13" column="36" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/common/App.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="9" column="37" lean-forward="false" selection-start-line="9" selection-start-column="37" selection-end-line="9" selection-end-column="37" />
+        <state relative-caret-position="60">
+          <caret line="10" column="37" lean-forward="true" selection-start-line="10" selection-start-column="37" selection-end-line="10" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/DeviceManager.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/util/PageUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-25">
-          <caret line="34" column="22" lean-forward="false" selection-start-line="34" selection-start-column="15" selection-end-line="34" selection-end-column="22" />
-          <folding />
+        <state relative-caret-position="94">
+          <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/ddmlib-25.3.1.jar!/com/android/ddmlib/Device.class">
+    <entry file="jar://$PROJECT_DIR$/libs/ddmlib-25.3.1.jar!/com/android/ddmlib/IShellOutputReceiver.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79">
-          <caret line="642" column="93" lean-forward="false" selection-start-line="642" selection-start-column="84" selection-end-line="642" selection-end-column="93" />
+        <state relative-caret-position="189">
+          <caret line="12" column="26" lean-forward="true" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/libs/ddmlib-25.3.1.jar!/com/android/ddmlib/IDevice.class">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/apk/ApkInfo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="124" column="9" lean-forward="false" selection-start-line="124" selection-start-column="9" selection-end-line="124" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/DirectoryService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="16" column="10" lean-forward="false" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#383#384#0" expanded="false" />
-            <element signature="e#410#411#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/IDeviceShell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/device/DeviceInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-          <folding>
-            <element signature="e#427#428#0" expanded="false" />
-            <element signature="e#456#457#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="72">
+          <caret line="144" column="0" lean-forward="false" selection-start-line="144" selection-start-column="0" selection-end-line="144" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/AdbCmdFormat.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="28" column="6" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="28" selection-end-column="6" />
+        <state relative-caret-position="107">
+          <caret line="21" column="39" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="39" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/AndroidShell.java">
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_151/src.zip!/java/lang/Process.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="54" column="13" lean-forward="false" selection-start-line="54" selection-start-column="13" selection-end-line="54" selection-end-column="13" />
-          <folding>
-            <element signature="e#439#440#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#1567#1568#0" expanded="true" />
-            <element signature="e#1617#1618#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="394">
+          <caret line="159" column="24" lean-forward="false" selection-start-line="159" selection-start-column="24" selection-end-line="159" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/net.oschina.app/monkey/error.txt" />
+    <entry file="file://$PROJECT_DIR$/test/net.oschina.app/monkey/log.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/DirectoryService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="35" column="45" lean-forward="false" selection-start-line="35" selection-start-column="25" selection-end-line="35" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/BaseTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="152">
+          <caret line="107" column="56" lean-forward="false" selection-start-line="107" selection-start-column="56" selection-end-line="107" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/config/MonkeyConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-18">
+          <caret line="80" column="34" lean-forward="false" selection-start-line="80" selection-start-column="34" selection-end-line="80" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/TesterFactory.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="89">
+          <caret line="35" column="22" lean-forward="true" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/util/FileUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="97">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/Message.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="5" column="16" lean-forward="false" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/IDeviceShell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="87" column="40" lean-forward="false" selection-start-line="87" selection-start-column="40" selection-end-line="87" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/jdk1.8.0_151/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="1768" column="0" lean-forward="false" selection-start-line="1768" selection-start-column="0" selection-end-line="1768" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/AdbCmdExecutor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3">
-          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+        <state relative-caret-position="217">
+          <caret line="140" column="80" lean-forward="true" selection-start-line="140" selection-start-column="80" selection-end-line="140" selection-end-column="80" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/media/MediaView.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/handler/LineChartHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="404">
-          <caret line="342" column="44" lean-forward="true" selection-start-line="342" selection-start-column="44" selection-end-line="342" selection-end-column="44" />
+        <state relative-caret-position="53">
+          <caret line="50" column="24" lean-forward="false" selection-start-line="50" selection-start-column="24" selection-end-line="50" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/media/Media.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ui/window/monkey_config.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-947">
-          <caret line="515" column="73" lean-forward="false" selection-start-line="515" selection-start-column="65" selection-end-line="515" selection-end-column="73" />
+        <state relative-caret-position="192">
+          <caret line="143" column="37" lean-forward="true" selection-start-line="143" selection-start-column="37" selection-end-line="143" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.3.3/javacv-1.3.3.jar!/org/bytedeco/javacv/FFmpegFrameGrabber.class">
+    <entry file="jar://$PROJECT_DIR$/libs/ddmlib-25.3.1.jar!/com/android/ddmlib/IDevice.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="433" column="36" lean-forward="true" selection-start-line="433" selection-start-column="36" selection-end-line="433" selection-end-column="36" />
+        <state relative-caret-position="106">
+          <caret line="120" column="91" lean-forward="false" selection-start-line="120" selection-start-column="64" selection-end-line="120" selection-end-column="91" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/control/Alert.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/window/MonkeyConfigController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="24" column="28" lean-forward="true" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="28" />
+        <state relative-caret-position="252">
+          <caret line="238" column="54" lean-forward="true" selection-start-line="238" selection-start-column="54" selection-end-line="238" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/test/tester/MonkeyTester.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="185" column="9" lean-forward="true" selection-start-line="185" selection-start-column="9" selection-end-line="185" selection-end-column="9" />
           <folding>
-            <element signature="e#8634#8635#0" expanded="false" />
-            <element signature="e#8669#8670#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;class#MonkeyTester#0" expanded="false" />
+            <element signature="docComment;method#getInstance#0;class#MonkeyTester#0" expanded="false" />
+            <element signature="method#getInstance#0;class#MonkeyTester#0" expanded="false" />
+            <element signature="method#execTest#0;class#MonkeyTester#0" expanded="false" />
+            <element signature="method#analyzeApp#0;class#MonkeyTester#0" expanded="false" />
+            <element signature="e#3923#3924#0" expanded="true" />
+            <element signature="e#3950#3951#0" expanded="true" />
+            <element signature="e#5128#5147#0" expanded="false" />
+            <element signature="method#getCommand#0;class#MonkeyTester#0" expanded="false" />
+            <element signature="e#7552#7608#0" expanded="false" />
+            <element signature="e#9694#9727#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/util/FFmpegFXImageDecoder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="34" column="43" lean-forward="true" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/src.zip!/javax/swing/text/html/ListView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="35" column="13" lean-forward="false" selection-start-line="35" selection-start-column="13" selection-end-line="35" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/util/HttpUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="11" column="24" lean-forward="true" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/chart/ValueAxis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="55" column="31" lean-forward="false" selection-start-line="55" selection-start-column="22" selection-end-line="55" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/chart/CategoryAxis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-840">
-          <caret line="25" column="24" lean-forward="false" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/chart/XYChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-681">
-          <caret line="432" column="18" lean-forward="false" selection-start-line="432" selection-start-column="13" selection-end-line="432" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/chart/LineChart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="78" column="37" lean-forward="true" selection-start-line="78" selection-start-column="37" selection-end-line="78" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/src.zip!/java/lang/Math.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-977">
-          <caret line="771" column="25" lean-forward="false" selection-start-line="771" selection-start-column="25" selection-end-line="771" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/application/Platform.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1076">
-          <caret line="35" column="19" lean-forward="false" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/src.zip!/java/util/Random.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1247">
-          <caret line="134" column="11" lean-forward="false" selection-start-line="134" selection-start-column="11" selection-end-line="134" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/ui/main.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="102" column="38" lean-forward="true" selection-start-line="102" selection-start-column="38" selection-end-line="102" selection-end-column="38" />
-          <folding>
-            <element signature="n#Tab#1;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#items#0;n#SplitPane#0;n#center#0;n#BorderPane#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/scene/chart/NumberAxis.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-806">
-          <caret line="62" column="29" lean-forward="false" selection-start-line="62" selection-start-column="19" selection-end-line="62" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/src.zip!/java/net/URI.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="8904">
-          <caret line="463" column="19" lean-forward="false" selection-start-line="463" selection-start-column="19" selection-end-line="463" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/websocket/javax.websocket-client-api/1.1/javax.websocket-client-api-1.1.jar!/javax/websocket/WebSocketContainer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="16" column="42" lean-forward="false" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/websocket/javax.websocket-client-api/1.1/javax.websocket-client-api-1.1.jar!/javax/websocket/Session.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="19" column="17" lean-forward="false" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/event/EventHandler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="44" column="15" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/websocket/javax.websocket-client-api/1.1/javax.websocket-client-api-1.1.jar!/javax/websocket/OnOpen.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="14" column="18" lean-forward="false" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/websocket/javax.websocket-client-api/1.1/javax.websocket-client-api-1.1.jar!/javax/websocket/ClientEndpoint.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="15" column="18" lean-forward="false" selection-start-line="15" selection-start-column="18" selection-end-line="15" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/websocket/javax.websocket-client-api/1.1/javax.websocket-client-api-1.1.jar!/javax/websocket/EndpointConfig.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="15" column="44" lean-forward="true" selection-start-line="15" selection-start-column="44" selection-end-line="15" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="903">
-          <caret line="54" column="21" lean-forward="true" selection-start-line="54" selection-start-column="21" selection-end-line="54" selection-end-column="21" />
-          <folding>
-            <element signature="n#build#0;n#project#0;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.13.1/tyrus-standalone-client-1.13.1.jar!/javax/websocket/RemoteEndpoint.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="145">
-          <caret line="27" column="0" lean-forward="false" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.13.1/tyrus-standalone-client-1.13.1.jar!/org/glassfish/tyrus/core/TyrusRemoteEndpoint.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-296">
-          <caret line="344" column="43" lean-forward="false" selection-start-line="344" selection-start-column="8" selection-end-line="344" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/concurrent/Service.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="409" column="45" lean-forward="false" selection-start-line="409" selection-start-column="40" selection-end-line="409" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://D:/Program Files/Java/jdk1.8.0_144/javafx-src.zip!/javafx/concurrent/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="57">
-          <caret line="729" column="41" lean-forward="false" selection-start-line="729" selection-start-column="33" selection-end-line="729" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/glassfish/tyrus/bundles/tyrus-standalone-client/1.13.1/tyrus-standalone-client-1.13.1.jar!/org/glassfish/tyrus/client/ClientManager.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="201" column="19" lean-forward="false" selection-start-line="201" selection-start-column="19" selection-end-line="201" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputWebsocketTask.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-34">
-          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="61">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/DeviceInfoService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-512">
-          <caret line="17" column="54" lean-forward="false" selection-start-line="17" selection-start-column="48" selection-end-line="17" selection-end-column="54" />
+        <state relative-caret-position="-44">
+          <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/device/AndroidShell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5">
+          <caret line="87" column="0" lean-forward="true" selection-start-line="87" selection-start-column="0" selection-end-line="87" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/bytedeco/javacv/1.3.3/javacv-1.3.3.jar!/org/bytedeco/javacv/FFmpegFrameGrabber.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="50" column="13" lean-forward="false" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="38" column="32" lean-forward="true" selection-start-line="38" selection-start-column="32" selection-end-line="38" selection-end-column="32" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputWebsocketClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/ui/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="12" column="35" lean-forward="true" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="35" />
+        <state relative-caret-position="235">
+          <caret line="99" column="36" lean-forward="true" selection-start-line="99" selection-start-column="36" selection-end-line="99" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputWebsocketService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/IDeviceStatusListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="33" column="42" lean-forward="true" selection-start-line="33" selection-start-column="42" selection-end-line="33" selection-end-column="42" />
+        <state relative-caret-position="129">
+          <caret line="23" column="9" lean-forward="false" selection-start-line="23" selection-start-column="9" selection-end-line="23" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceService_bak.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/handler/KeyboardInputHandler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        <state relative-caret-position="-581">
+          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#429#430#0" expanded="false" />
+            <element signature="e#473#474#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketClient.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/util/H264Decoder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="49" column="16" lean-forward="false" selection-start-line="49" selection-start-column="16" selection-end-line="49" selection-end-column="16" />
+        <state relative-caret-position="-126">
+          <caret line="41" column="43" lean-forward="true" selection-start-line="41" selection-start-column="43" selection-end-line="41" selection-end-column="43" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketTask.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/common/Config.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="44" column="37" lean-forward="true" selection-start-line="44" selection-start-column="37" selection-end-line="44" selection-end-column="37" />
+        <state relative-caret-position="93">
+          <caret line="6" column="0" lean-forward="true" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/performance/PerformanceWebsocketService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/service/input/InputMethodClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="37" column="33" lean-forward="false" selection-start-line="37" selection-start-column="33" selection-end-line="37" selection-end-column="33" />
+        <state relative-caret-position="325">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#525#526#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/bean/device/DeviceInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="243" column="60" lean-forward="true" selection-start-line="243" selection-start-column="60" selection-end-line="243" selection-end-column="60" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="docComment;field#testing#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="docComment;method#initDevice#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="e#4966#6076#0" expanded="false" />
+            <element signature="method#performanceInfos#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="e#7626#7813#0" expanded="false" />
+            <element signature="method#installApk#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="method#uninstallApk#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="docComment;method#startActivity#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="method#startActivity#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="docComment;method#onAgentMainClassClosed#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="method#getDeviceLogcat#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="docComment;method#executeCommandStartMain#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="method#executeCommandStartMain#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="docComment;method#pushFile#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="method#executeMonkeyCommand#0;class#DeviceInfo#0" expanded="false" />
+            <element signature="method#setDeviceStatusListener#0;class#DeviceInfo#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/handler/MouseEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="44" column="5" lean-forward="true" selection-start-line="44" selection-start-column="5" selection-end-line="44" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/controller/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="255" column="15" lean-forward="true" selection-start-line="255" selection-start-column="15" selection-end-line="255" selection-end-column="15" />
+        <state relative-caret-position="272">
+          <caret line="214" column="9" lean-forward="true" selection-start-line="214" selection-start-column="9" selection-end-line="214" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#initDevice#0;class#MainController#0" expanded="false" />
-            <element signature="method#run#0;class#4234:5404" expanded="false" />
+            <element signature="docComment;class#MainController#0" expanded="false" />
+            <element signature="method#initialize#0;class#MainController#0" expanded="false" />
+            <element signature="method#initLineChart#0;class#MainController#0" expanded="false" />
+            <element signature="method#initTableView#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnConnectClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnSelectAppClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#showToWindow#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnScreenshotClick#0;class#MainController#0" expanded="false" />
             <element signature="method#btnLiveClick#0;class#MainController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/live/itrip/client/AppMain.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
-          <folding>
-            <element signature="method#loadConfig#0;class#AppMain#0" expanded="false" />
+            <element signature="method#btnStopClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnBackClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnHomeClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnMenuClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnMonkeyClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnRobotiumClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnUiautomatorClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#btnAppiumClick#0;class#MainController#0" expanded="false" />
+            <element signature="method#writeClientLog#0;class#MainController#0" expanded="false" />
+            <element signature="method#getDeviceInfos#0;class#MainController#0" expanded="false" />
+            <element signature="method#handPerformanceDatas#0;class#MainController#0" expanded="false" />
+            <element signature="method#onAgentMainClassClosed#0;class#MainController#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1331,7 +1515,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2735632" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
@@ -1352,6 +1535,17 @@
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
           <last-edited>Maven: log4j:log4j:1.2.17</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2735632" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ScopeChooserConfigurable.UI">
+        <settings>
           <splitter-proportions>
             <option name="proportions">
               <list>
