@@ -1,7 +1,6 @@
 package live.itrip.agent.callback;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 import com.koushikdutta.async.http.server.AsyncHttpServerRequest;
 import com.koushikdutta.async.http.server.AsyncHttpServerResponse;
@@ -10,7 +9,6 @@ import com.koushikdutta.async.http.server.HttpServerRequestCallback;
 import java.io.ByteArrayOutputStream;
 
 import live.itrip.agent.EncoderFeeder;
-import live.itrip.agent.Main;
 import live.itrip.agent.common.HttpErrorCode;
 import live.itrip.agent.util.InternalApi;
 import live.itrip.agent.util.LogUtils;

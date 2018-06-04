@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.protobuf'
+//apply plugin: 'com.google.protobuf'
 
 android {
     compileSdkVersion 26
@@ -34,7 +34,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:26.1.0'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support.constraint:constraint-layout:1.1.0'
     compile 'com.koushikdutta.async:androidasync:2.1.9'
 
     compile 'com.google.protobuf:protobuf-lite:3.0.1'
@@ -44,20 +44,20 @@ dependencies {
 
 }
 
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.1.0'
-    }
-    plugins {
-        javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.plugins {
-                javalite { }
-            }
-        }
-    }
-}
+//protobuf {
+//    protoc {
+//        artifact = 'com.google.protobuf:protoc:3.1.0'
+//    }
+//    plugins {
+//        javalite {
+//            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+//        }
+//    }
+//    generateProtoTasks {
+//        all().each { task ->
+//            task.plugins {
+//                javalite { }
+//            }
+//        }
+//    }
+//}

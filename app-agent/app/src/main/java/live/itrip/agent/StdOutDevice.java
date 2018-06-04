@@ -15,6 +15,9 @@ import java.nio.ByteOrder;
 
 import live.itrip.agent.virtualdisplay.EncoderDevice;
 
+/**
+ * @author fengjianfeng
+ */
 public class StdOutDevice extends EncoderDevice {
     private int bitrate = 500000;
     private BufferedDataSink sink;
@@ -24,7 +27,8 @@ public class StdOutDevice extends EncoderDevice {
             super(venc);
         }
 
-        protected void encode() throws Exception {
+        @Override
+        protected void encode() {
             Log.i(StdOutDevice.this.LOGTAG, "Writer started.");
             ByteBuffer[] encouts = null;
             boolean doneCoding = false;
@@ -96,6 +100,7 @@ public class StdOutDevice extends EncoderDevice {
         this.encoder.setParameters(bundle);
     }
 
+    @Override
     protected EncoderRunnable onSurfaceCreated(MediaCodec venc) {
         return new Writer(venc);
     }

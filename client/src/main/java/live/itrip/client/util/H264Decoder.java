@@ -26,7 +26,7 @@ public class H264Decoder {
         Java2DFrameConverter converter = new Java2DFrameConverter();
 
         try (final FrameGrabber grabber = new FFmpegFrameGrabber(url)) {
-            double frameRate = 25000000D;
+            double frameRate = 500000;
             String codeFormatH264 = "h264";
             int bitRate = 96;
             String presetUltraFast = "ultrafast";

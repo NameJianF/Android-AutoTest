@@ -1,21 +1,16 @@
 package live.itrip.agent.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.hardware.display.DisplayManager;
 import android.hardware.display.IDisplayManager;
 import android.hardware.input.InputManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.IPowerManager;
-import android.util.Log;
 import android.view.IWindowManager;
 import android.view.InputEvent;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
-import live.itrip.agent.Main;
 
 /**
  * Created on 2017/12/4.

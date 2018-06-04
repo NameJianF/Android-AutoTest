@@ -407,7 +407,7 @@ public class MainController implements IClientLogListener, IDeviceStatusListener
     private void btnAppiumClick(MouseEvent event) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Information Dialog");
-        alert.setHeaderText(null);
+        alert.setHeaderText("");
         alert.setContentText("敬请期待!");
         alert.showAndWait();
     }

@@ -27,6 +27,9 @@ import java.util.concurrent.TimeUnit;
 import live.itrip.agent.util.LogUtils;
 import live.itrip.agent.util.Parsers;
 
+/**
+ * @author fengjianfeng
+ */
 public abstract class EncoderDevice {
     private static final boolean assertionsDisabled = (!EncoderDevice.class.desiredAssertionStatus());
     public final String LOGTAG = getClass().getSimpleName();
@@ -54,6 +57,7 @@ public abstract class EncoderDevice {
             this.venc = null;
         }
 
+        @Override
         public final void run() {
             try {
                 encode();

@@ -127,49 +127,4 @@ public class ScreenLiveRequestCallback implements HttpServerRequestCallback {
         return encodeSize;
     }
 
-
-    /**
-     private void writer(BufferedDataSink sink, IWindowManager wm) {
-     if (this.currentDevice != null) {
-     this.currentDevice.stop();
-     this.currentDevice = null;
-     }
-     LogUtils.i("writer ........");
-
-     Point encodeSize = WebSocketInputHandler.getEncodeSize();
-     SurfaceControlVirtualDisplayFactory factory = new SurfaceControlVirtualDisplayFactory();
-     StdOutDevice device = new StdOutDevice(encodeSize.x, encodeSize.y, sink);
-     //        if (resolution != 0.0d) {
-     //            device.setUseEncodingConstraints(false);
-     //        }
-
-     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-     device.useSurface(false);
-     }
-     // set device on Main
-     Main.setCurrentDevice(device);
-     LogUtils.i("registering virtual display");
-     if (device.supportsSurface()) {
-     device.registerVirtualDisplay(factory, 0);
-     } else {
-     LogUtils.i("Using legacy path");
-     device.createDisplaySurface();
-     final EncoderFeeder feeder = new EncoderFeeder(device.getMediaCodec()
-     , device.getEncodingDimensions().x
-     , device.getEncodingDimensions().y
-     , device.getColorFormat());
-     try {
-     IRotationWatcher watcher = new IRotationWatcher.Stub() {
-    @Override public void onRotationChanged(int rotation) throws RemoteException {
-    feeder.setRotation(rotation);
-    }
-    };
-     wm.watchRotation(watcher, 0);
-     } catch (RemoteException ignored) {
-     }
-     feeder.feed();
-     }
-     LogUtils.i("virtual display registered");
-     }
-     **/
 }

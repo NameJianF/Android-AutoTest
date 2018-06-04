@@ -1,7 +1,5 @@
 package live.itrip.client.service;
 
-import live.itrip.client.util.Logger;
-
 import java.io.File;
 
 /**
@@ -12,16 +10,31 @@ import java.io.File;
 public class DirectoryService {
 
     private static String path = System.getProperty("user.dir");
+    private static final String OS_NAME = System.getProperty("os.name").toLowerCase();
 
     public static String getBasePath() {
         return path;
     }
 
     public static String getAdbPath() {
+
+        if (OS_NAME.startsWith("mac")) {
+            return path + File.separator + "tools" + File.separator + "mac" + File.separator + "adb";
+        } else if (OS_NAME.startsWith("linux")) {
+            return "adb";
+        }
+
         return path + File.separator + "tools" + File.separator + "adb.exe";
+
     }
 
     public static String getAaptPath() {
+        if (OS_NAME.startsWith("mac")) {
+            return path + File.separator + "tools" + File.separator + "mac" + File.separator + "aapt";
+        } else if (OS_NAME.startsWith("linux")) {
+            return "aapt";
+        }
+
         return path + File.separator + "tools" + File.separator + "aapt.exe";
     }
 

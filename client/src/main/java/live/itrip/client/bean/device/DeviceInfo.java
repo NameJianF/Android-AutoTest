@@ -84,48 +84,54 @@ public class DeviceInfo {
         // init shell
         androidShell = new AndroidShell(this);
 
+
         ThreadExecutor.execute(() -> {
-            // set Thread Name
-            Thread.currentThread().setName("thread-InitDevice");
-
-            Message msg;
-            // uninstall agent
-            msg = androidShell.uninstallAgent(AGENT_PACKAGE_NAME);
-            Logger.debug(String.format("unInstallAgent Code:%s,msg:%s", msg.getCode(), msg.getContent()));
-
-            // install agent
-            String agentPath = DirectoryService.getAgentPath();
-            msg = androidShell.installAgent(agentPath, true);
-            Logger.debug(String.format("installAgent Code:%s,msg:%s", msg.getCode(), msg.getContent()));
-
-            // start main
-            Logger.debug("startAgentMainClass...........");
-            androidShell.startAgentMainClass(AGENT_CLASS_PATH);
-            Logger.debug("startAgentMainClass end...........");
-
             try {
-                Thread.sleep(2 * 1000);
+                // set Thread Name
+                Thread.currentThread().setName("thread-InitDevice");
+
+                Message msg;
+                // uninstall agent
+                msg = androidShell.uninstallAgent(AGENT_PACKAGE_NAME);
+                Logger.debug(String.format("unInstallAgent Code:%s,msg:%s", msg.getCode(), msg.getContent()));
+
+                // install agent
+                String agentPath = DirectoryService.getAgentPath();
+                msg = androidShell.installAgent(agentPath, true);
+                Logger.debug(String.format("installAgent Code:%s,msg:%s", msg.getCode(), msg.getContent()));
+
+                // start main
+                Logger.debug("startAgentMainClass...........");
+
+
+                ThreadExecutor.execute(() -> {
+                    String cmd = String.format("%s -s %s shell %s", DirectoryService.getAdbPath(), this.getSerialNumber(), AGENT_CLASS_PATH);
+                    this.androidShell.executeCommandByProcess(cmd);
+
+                    Logger.debug("startAgentMainClass end...........");
+                });
+
+
+                Thread.sleep(3 * 1000);
+
+                Logger.debug("createForward...........");
+                String cmd = String.format("%s -s %s forward tcp:%s tcp:%s ", DirectoryService.getAdbPath(), this.getSerialNumber(), Config.PORT_53516, Config.PORT_53516);
+                this.androidShell.executeCommandByProcess(cmd);
+
+                Logger.debug("createForward end...........");
+
+                // TODO >>> 需要先打开gfxinfo,再启动app
+                // 打开 gfxinfo 属性：setprop debug.hwui.profile true
+                //            DeviceInfoService.setProfileTure();
+
+                deviceStatusListener.inited("device init success .......");
+
+                // 显示设备信息
+                ObservableList<String> items = DeviceInfoService.getDeviceInformations(this);
+                deviceStatusListener.getDeviceInfos(items);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
-            Logger.debug("createForward...........");
-            try {
-                androidShell.createForward(Config.PORT_53516, String.valueOf(Config.PORT_53516));
-            } catch (ShellCommandUnresponsiveException e) {
-                e.printStackTrace();
-            }
-            Logger.debug("createForward end...........");
-
-            // TODO >>> 需要先打开gfxinfo,再启动app
-            // 打开 gfxinfo 属性：setprop debug.hwui.profile true
-            DeviceInfoService.setProfileTure();
-
-            deviceStatusListener.inited("device init success .......");
-
-            // 显示设备信息
-            ObservableList<String> items = DeviceInfoService.getDeviceInformations(this);
-            deviceStatusListener.getDeviceInfos(items);
         });
     }
 
@@ -333,17 +339,6 @@ public class DeviceInfo {
 
     public Message executeShellCommand(String command, IShellOutputReceiver receiver) {
         return this.androidShell.executeShellCommand(command, receiver);
-    }
-
-    /**
-     * 启动 agent main class
-     *
-     * @param command
-     * @return
-     * @throws IOException
-     */
-    public StringBuffer executeCommandStartMain(String command) throws IOException {
-        return AdbCmdExecutor.executeCommandStartMain(command);
     }
 
     /**

@@ -48,6 +48,7 @@ public class SurfaceControlVirtualDisplayFactory implements VirtualDisplayFactor
         }
     }
 
+    @Override
     public VirtualDisplay createVirtualDisplay(String name, int width, int height, int dpi, int flags, Surface surface, Handler handler) {
         try {
             Class surfaceControlClass = Class.forName("android.view.SurfaceControl");
@@ -70,7 +71,7 @@ public class SurfaceControlVirtualDisplayFactory implements VirtualDisplayFactor
             return new VirtualDisplay() {
                 IRotationWatcher watcher;
                 IWindowManager wm = Stub.asInterface((IBinder) getServiceMethod.invoke(null, new Object[]{"window"}));
-
+                @Override
                 public void release() {
                     LogUtils.i("VirtualDisplay released");
                     this.wm = null;
